@@ -14,15 +14,17 @@ public class RangeMovement : MonoBehaviour
     int add_stage=1;
     bool stageCheck=false;
     bool PatternCheck=false;
+    bool SizeCheck=false;
     [Range(0,200)]public float lerpSpeed;
 
     Vector3 FinalPos=Vector3.zero;
     Vector3 velocity=Vector3.zero;
+    Vector3 newScale = new Vector3(20, 4, 1);
     private void Awake() {
         Camera cam = Camera.main;
         BoarderTop = (Vector2)cam.ScreenToWorldPoint(new Vector3(0, cam.pixelHeight, 0));
         BoarderBottom = (Vector2)cam.ScreenToWorldPoint(new Vector3(0, 0, 0));
-        pattern_NO=Random.Range(1,3);
+        pattern_NO=Random.Range(1,4);
     }
     void ConstantMove()
     {
@@ -73,6 +75,28 @@ public class RangeMovement : MonoBehaviour
         add_stage*=-1;
              
     }
+    public void SizeChange()
+    {
+        if(!SizeCheck)
+        {
+            SizeCheck=true;
+            StartCoroutine(SizeChangeWait());
+        }
+        FinalPos.y=BoarderBottom.y+(BoarderTop.y-BoarderBottom.y)/2;
+        transform.position=Vector3.SmoothDamp(transform.position,FinalPos,ref velocity,Time.deltaTime*lerpSpeed);    
+        transform.localScale=Vector3.Lerp(transform.localScale,newScale,2.0f*Time.deltaTime);
+    }
+    private IEnumerator SizeChangeWait()
+    {
+        
+        yield return new WaitForSeconds(5);
+        if(newScale.y==4) 
+        newScale.y=1;
+        else
+        newScale.y=4;
+        SizeCheck=false;
+             
+    }
     void Update()
     {
         switch(pattern_NO)
@@ -86,20 +110,28 @@ public class RangeMovement : MonoBehaviour
             case 2:
                 tripleStageMove();
                 break;
+            case 3:
+                SizeChange();
+                break;
         }
         if(!PatternCheck)
         {
             StartCoroutine(patternDecision());
             PatternCheck=true;
         }
+        if(pattern_NO!=3)
+        {
+            
+            transform.localScale=Vector3.Lerp(transform.localScale,new Vector3(20,2,1),2.0f*Time.deltaTime);
+        }
     }
 
     private IEnumerator patternDecision()
     {
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(15);
         if(pattern_NO!=2)
         stage=2;
-        pattern_NO=Random.Range(1,3);
+        pattern_NO=Random.Range(1,4);
         int previous= pattern_NO;
         PatternCheck=false;
     }
