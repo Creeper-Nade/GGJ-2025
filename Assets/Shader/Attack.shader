@@ -1,3 +1,4 @@
+// stolen from website, not tested yet
 Shader "CRLuo/CRLuo_Teaching14_Ramp_UVPolar"
 {
     Properties

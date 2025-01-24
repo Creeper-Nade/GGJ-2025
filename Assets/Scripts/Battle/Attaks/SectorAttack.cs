@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace AmpFC.Battle
-{
+{   
+    // unused for now, but can be used for future development (if we have time)
     public class SectorAttack : Attack
     {
         public float radius;

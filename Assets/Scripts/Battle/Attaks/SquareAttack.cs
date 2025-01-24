@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace AmpFC.Battle
 {
+    // unused for now, but can be used for future development (if we have time)
     public class SquareAttack : Attack
     {
         public float? width;
