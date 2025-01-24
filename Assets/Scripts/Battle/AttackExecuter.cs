@@ -29,6 +29,7 @@ namespace AmpFC.Battle
             {
                 Debug.Log("Target is out of range");
             }
+            Destroy(gameObject);
         }
     }
 }

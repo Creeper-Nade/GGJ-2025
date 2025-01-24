@@ -15,35 +15,38 @@ namespace AmpFC.Battle
         public override GameObject DoWarning(GameObject source)
         {
             GameObject warningGO = Instantiate(warningPrefab);
-            warningGO.transform.position = Camera.main.WorldToScreenPoint(source.transform.position);
-            warningGO.transform.rotation = source.transform.rotation;
+            // Making camera bounds
+            var cam = Camera.main;
+            var leftBottom = (Vector2)cam.ScreenToWorldPoint(new Vector3(0, 0, cam.nearClipPlane));
+            var rightTop = (Vector2)cam.ScreenToWorldPoint(new Vector3(cam.pixelWidth, cam.pixelHeight, cam.nearClipPlane));
 
-            Vector3 screenPos = warningGO.transform.position;
-            screenPos.x = Mathf.Clamp(screenPos.x, 0, Screen.width);
-            screenPos.y = Mathf.Clamp(screenPos.y, 0, Screen.height);
-            warningGO.transform.position = screenPos;
+            var center = leftBottom + (rightTop - leftBottom) / 2;
+            // Warning: assume source is on the cam.nearClipPlane
+            var direction = new Vector2(source.transform.position.x, source.transform.position.y) - center;
+            var angle = Vector2.SignedAngle(Vector2.right, direction);
 
-            if (screenPos.x > 0 && screenPos.x < Screen.width && screenPos.y > 0 && screenPos.y < Screen.height)
+            // Calculate the intersection of the ray and the rectangle
+            Vector2 intersection;
+            float t1 = (leftBottom.x - center.x) / direction.x;
+            float t2 = (rightTop.x - center.x) / direction.x;
+            float t3 = (leftBottom.y - center.y) / direction.y;
+            float t4 = (rightTop.y - center.y) / direction.y;
+
+            float tmin = Mathf.Max(Mathf.Min(t1, t2), Mathf.Min(t3, t4));
+            float tmax = Mathf.Min(Mathf.Max(t1, t2), Mathf.Max(t3, t4));
+
+            if (tmax < 0 || tmin > tmax)
             {
-                if (screenPos.x < Screen.width / 2)
-                {
-                    screenPos.x = 0;
-                }
-                else
-                {
-                    screenPos.x = Screen.width;
-                }
-
-                if (screenPos.y < Screen.height / 2)
-                {
-                    screenPos.y = 0;
-                }
-                else
-                {
-                    screenPos.y = Screen.height;
-                }
+                intersection = center; // No intersection, set to center as fallback
             }
-            warningGO.transform.position = screenPos;
+            else
+            {
+                intersection = center + direction * tmin;
+            }
+
+            // Set the position of the warningGO to the nearest edge
+            warningGO.transform.position = intersection;
+            source.transform.position = intersection;
             return warningGO;
         }
 

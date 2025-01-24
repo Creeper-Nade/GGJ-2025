@@ -16,7 +16,7 @@ namespace AmpFC.Battle
         private void Start()
         {
             StartCoroutine(DestroyAfterTime());
-            _direction = transform.forward;
+            _direction = transform.right;
         }
 
         private void Update()

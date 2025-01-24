@@ -15,4 +15,10 @@ MonoBehaviour:
   attacks:
   - attack: {fileID: 11400000, guid: cc4af569ba72449febd5f78a2ed12751, type: 2}
     position: {x: 1, y: 0, z: 0}
-    direction: {x: -1, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0}
+  - attack: {fileID: 11400000, guid: cc4af569ba72449febd5f78a2ed12751, type: 2}
+    position: {x: -1, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 90}
+  - attack: {fileID: 11400000, guid: cc4af569ba72449febd5f78a2ed12751, type: 2}
+    position: {x: -1, y: 0.5, z: 0}
+    rotation: {x: 0, y: 0, z: 270}
