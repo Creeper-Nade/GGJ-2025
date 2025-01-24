@@ -85,7 +85,7 @@ public class CollisionDetection : MonoBehaviour
     public void Unsubscribe()
     {
         float rand = Random.value;
-        if(rand<=0.1f)
+        if(rand<=0.1f&&DataManager.Likers>0)
         {
             DataManager.Likers--;
             DataManager.Haters++;
