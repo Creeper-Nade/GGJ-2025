@@ -1,15 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CollisionDetection : MonoBehaviour
 {
 
-    
+    public Graph_tendency graph;
     public GameObject player;
     private List<Collider2D> collisionList= new List<Collider2D>();
     private void Awake() {
         player=GameObject.FindGameObjectWithTag("Player");
+        graph=GameObject.FindObjectOfType<Graph_tendency>();
         //data=GameObject.FindObjectOfType<DataManager>().GetComponent<DataManager>();
         //data.FanTime=data.MaxFanTime;
     }
@@ -77,6 +79,7 @@ public class CollisionDetection : MonoBehaviour
             DataManager.Likers+=DataManager.Subscription_Amplifier;
             DataManager.FanSum+=DataManager.Subscription_Amplifier;
         }
+        //graph.Draw(1);
         
     }
     public void Unsubscribe()
@@ -97,6 +100,7 @@ public class CollisionDetection : MonoBehaviour
             DataManager.Haters--;
             DataManager.FanSum--;
         }
+        //graph.Draw(-1);
     }
     float CheckPlayerPos()
     {
