@@ -8,6 +8,7 @@ public class RangeMovement : MonoBehaviour
     private int pattern_NO;
     Vector3 BoarderTop;
     Vector3 BoarderBottom;
+    public Transform area;
     [Header("data")]
     public float constantSPEED;
     int stage=2;
@@ -17,13 +18,14 @@ public class RangeMovement : MonoBehaviour
     bool SizeCheck=false;
     [Range(0,200)]public float lerpSpeed;
 
-    Vector3 FinalPos=Vector3.zero;
+    Vector3 FinalPos=new Vector3(2.4f,0,0);
     Vector3 velocity=Vector3.zero;
-    Vector3 newScale = new Vector3(20, 4, 1);
+    Vector3 newScale = new Vector3(12.5f, 3, 1);
     private void Awake() {
-        Camera cam = Camera.main;
-        BoarderTop = (Vector2)cam.ScreenToWorldPoint(new Vector3(0, cam.pixelHeight, 0));
-        BoarderBottom = (Vector2)cam.ScreenToWorldPoint(new Vector3(0, 0, 0));
+        //Camera cam = Camera.main;
+        area=GameObject.FindObjectOfType<edge_collision>().transform;
+        BoarderTop = area.position+new Vector3(0,area.localScale.y/2,0);
+        BoarderBottom = area.position+new Vector3(0,-area.localScale.y/2,0);
         pattern_NO=Random.Range(1,4);
     }
     void ConstantMove()
@@ -31,7 +33,7 @@ public class RangeMovement : MonoBehaviour
             Vector3 movePos=transform.position;
             movePos.y+= constantSPEED* Time.deltaTime;
             transform.position=movePos;
-            if(transform.position.y>=BoarderTop.y-1 || transform.position.y<=BoarderBottom.y+1)
+            if((transform.position.y>=BoarderTop.y-.75f && constantSPEED>0) || (transform.position.y<=BoarderBottom.y+.75f && constantSPEED<0))
             {
                 constantSPEED*=-1;
             }
@@ -47,16 +49,16 @@ public class RangeMovement : MonoBehaviour
         switch (stage)
         {
             default:
-                FinalPos.y=BoarderBottom.y+1;
+                FinalPos.y=BoarderBottom.y+.75f;
                 break;
             case 1:
-                FinalPos.y=BoarderBottom.y+1;
+                FinalPos.y=BoarderBottom.y+.75f;
                 break;
             case 2:
                 FinalPos.y=BoarderBottom.y+(BoarderTop.y-BoarderBottom.y)/2;
                 break;
             case 3:
-                FinalPos.y=BoarderTop.y-1;
+                FinalPos.y=BoarderTop.y-.75f;
                 break;
         }
         //Vector3 movePos=transform.position;
@@ -82,7 +84,7 @@ public class RangeMovement : MonoBehaviour
             SizeCheck=true;
             StartCoroutine(SizeChangeWait());
         }
-        FinalPos.y=BoarderBottom.y+(BoarderTop.y-BoarderBottom.y)/2;
+        FinalPos=new Vector3(2.4f,BoarderBottom.y+(BoarderTop.y-BoarderBottom.y)/2,0);
         transform.position=Vector3.SmoothDamp(transform.position,FinalPos,ref velocity,Time.deltaTime*lerpSpeed);    
         transform.localScale=Vector3.Lerp(transform.localScale,newScale,2.0f*Time.deltaTime);
     }
@@ -90,10 +92,10 @@ public class RangeMovement : MonoBehaviour
     {
         
         yield return new WaitForSeconds(5);
-        if(newScale.y==4) 
-        newScale.y=1;
+        if(newScale.y==3) 
+        newScale.y=.75f;
         else
-        newScale.y=4;
+        newScale.y=3;
         SizeCheck=false;
              
     }
@@ -122,7 +124,7 @@ public class RangeMovement : MonoBehaviour
         if(pattern_NO!=3)
         {
             
-            transform.localScale=Vector3.Lerp(transform.localScale,new Vector3(20,2,1),2.0f*Time.deltaTime);
+            transform.localScale=Vector3.Lerp(transform.localScale,new Vector3(12.5f,1.5f,1),2.0f*Time.deltaTime);
         }
     }
 
