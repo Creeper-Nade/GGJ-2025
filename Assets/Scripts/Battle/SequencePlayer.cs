@@ -8,8 +8,9 @@ namespace AmpFC.Battle
 
         public void Start()
         {
+            // just start the sequence and play it one after another
             sequence.Initialize();
-            sequence.ExecuteNextAttack();
+            sequence.Play();
         }
     }
 }
