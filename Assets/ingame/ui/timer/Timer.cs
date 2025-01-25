@@ -6,28 +6,29 @@ public class Timer : MonoBehaviour
 {
     public ResultCalculation calculate;
     public Animator animator;
-    private float time=90f;
-    private bool Zawarudo=false;
-    private void Awake() {
-        animator=GetComponent<Animator>();
-        calculate=GameObject.FindObjectOfType<ResultCalculation>();
+    private float time = 90f;
+    private bool Zawarudo = false;
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+        calculate = GameObject.FindObjectOfType<ResultCalculation>();
     }
 
     void Start()
     {
-        time=90f;
+        time = 90f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(time>0)
+        if (time > 0)
         {
-            time-=Time.deltaTime;
+            time -= Time.deltaTime;
         }
         else if (!Zawarudo)
         {
-            Zawarudo=true;
+            Zawarudo = true;
             StartCoroutine(TimesUP());
         }
     }
@@ -35,7 +36,7 @@ public class Timer : MonoBehaviour
     IEnumerator TimesUP()
     {
         animator.SetTrigger("TimesUp");
-        Time.timeScale=0;
+        Time.timeScale = 0;
         yield return new WaitForSecondsRealtime(1.8f);
         calculate.RecordValue();
     }

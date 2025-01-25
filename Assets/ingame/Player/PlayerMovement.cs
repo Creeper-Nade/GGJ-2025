@@ -52,22 +52,21 @@ public class PlayerMovement : MonoBehaviour
             new Vector2(0, smoothmove.y * speed) - rb.velocity,
             ForceMode2D.Impulse
         );
-
         //rb.velocity = new Vector2(0, smoothmove.y * speed);
- 
+
         // rb.velocity = new Vector2(0, smoothmove.y * speed);
     }
 
     private void Knockback(float damage, float knockback, Vector2 direction)
     {
         var force = direction.normalized * knockback;
-        if (Mathf.Abs(direction.normalized.y) < 0.1f)
+        if (Mathf.Abs(force.y) < 0.1f)
         {
             force.y = Random.value > 0.5f ? 1f : -1f;
             force.y *= knockback;
         }
-        var constrainedForce = new Vector2(0, 50000);
+        var constrainedForce = new Vector2(0, force.y);
         Debug.Log("Apply knockback: " + constrainedForce);
-        rb.AddForce(constrainedForce, ForceMode2D.Impulse);
+        rb.AddForce(constrainedForce * 500, ForceMode2D.Force);
     }
 }
