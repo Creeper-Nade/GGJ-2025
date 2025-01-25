@@ -21,14 +21,14 @@ namespace AmpFC.Battle
             yield return new WaitForSeconds(_attack.warningTime);
             Destroy(warningGO);
             _attack.Execute(gameObject);
-            if (_attack.IsInRange(Vector2.zero, Vector2.zero)) // this should be player position
-            {
-                Debug.Log("Target is in range");
-            }
-            else
-            {
-                Debug.Log("Target is out of range");
-            }
+            // if (_attack.IsInRange(Vector2.zero, Vector2.zero)) // this should be player position
+            // {
+            //     Debug.Log("Target is in range");
+            // }
+            // else
+            // {
+            //     Debug.Log("Target is out of range");
+            // }
             Destroy(gameObject);
         }
     }

@@ -19,5 +19,5 @@ MonoBehaviour:
   warningPrefab: {fileID: 1344183862778977605, guid: 865f65afc47e5487c977f6ab332eef8d, type: 3}
   speed: 1
   range: 1
-  knockback: 2
+  knockback: 100
   projectilePrefab: {fileID: 4700957378722671118, guid: 64e52583120f54bbea91c68f60a37d28, type: 3}
