@@ -36,13 +36,14 @@ namespace AmpFC.Battle
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-        
+
             if (collision.CompareTag("Player"))
             {
                 var direction = collision.transform.position - transform.position;
                 onPlayerHit?.Invoke(damage, knockback, direction);
                 Destroy(gameObject);
-            } else if (collision.CompareTag("Enemy"))
+            }
+            else if (collision.CompareTag("Enemy"))
             {
                 var direction = collision.transform.position - transform.position;
                 onEnemyHit?.Invoke(damage, knockback, direction);
