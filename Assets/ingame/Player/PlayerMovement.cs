@@ -57,12 +57,12 @@ public class PlayerMovement : MonoBehaviour
     private void Knockback(float damage, float knockback, Vector2 direction)
     {
         var force = direction.normalized * knockback;
-        if (Mathf.Abs(force.y) < 0.1f)
+        if (Mathf.Abs(direction.normalized.y) < 0.1f)
         {
             force.y = Random.value > 0.5f ? 1f : -1f;
             force.y *= knockback;
         }
-        var constrainedForce = new Vector2(0, force.y);
+        var constrainedForce = new Vector2(0, 50000);
         Debug.Log("Apply knockback: " + constrainedForce);
         rb.AddForce(constrainedForce, ForceMode2D.Impulse);
     }
