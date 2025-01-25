@@ -43,6 +43,7 @@ namespace AmpFC.Battle
         /// <returns></returns>
         private bool ExecuteNextAttack()
         {
+            Debug.Log(currentAttackIndex);
             if (currentAttackIndex < attacks.Count)
             {
                 AttackItem attackItem = attacks[currentAttackIndex];
@@ -66,6 +67,8 @@ namespace AmpFC.Battle
                     });
                 }
             }
+            //running = false;
+            Debug.Log(currentAttackIndex < attacks.Count);
             return currentAttackIndex < attacks.Count;
         }
 
@@ -75,6 +78,7 @@ namespace AmpFC.Battle
         public void Play()
         {
             running = true;
+            //Debug.Log("asd");
             ExecuteNextAttack();
         }
 

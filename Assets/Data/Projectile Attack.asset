@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Projectile Attack
   m_EditorClassIdentifier: 
   coolDownTime: 0
-  warningTime: 3
+  warningTime: 2
   damage: 0
   prefab: {fileID: 2958244573274335191, guid: 8bde1ff946c55f646a5d849059b6752b, type: 3}
   warningPrefab: {fileID: 1344183862778977605, guid: 865f65afc47e5487c977f6ab332eef8d, type: 3}
