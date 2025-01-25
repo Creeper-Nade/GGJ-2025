@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ResultCalculation : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class ResultCalculation : MonoBehaviour
     public GameObject CloseButton;
     //components and data
     Animator animator;
+    public Animator TransAnime;
     int FanGain;
     int FanGainIncrease=0;
     public GameObject SalaryDisplay;
@@ -102,7 +104,13 @@ public class ResultCalculation : MonoBehaviour
     
     public void ToIntermission()
     {
-        Debug.Log("rest");
+        TransAnime.SetTrigger("close");
+        StartCoroutine(intermission_cd());
+    }
+    IEnumerator intermission_cd()
+    {
+        yield return new WaitForSecondsRealtime(1);
+        SceneManager.LoadScene(2);
     }
 
 }
