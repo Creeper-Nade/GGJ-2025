@@ -17,6 +17,7 @@ public class ResultCalculation : MonoBehaviour
     public GameObject FanGainDisplay;
     TextMeshProUGUI GainTXT;
     public GameObject CloseButton;
+    public AudioSource vocalFry;
     //components and data
     Animator animator;
     public Animator TransAnime;
@@ -46,6 +47,11 @@ public class ResultCalculation : MonoBehaviour
     }
     IEnumerator DisplayFan()
     {
+                        while(vocalFry.volume>0)
+                {
+                    yield return new WaitForSecondsRealtime(0.01f);
+                    vocalFry.volume-= 0.01f;
+                }
         yield return new WaitForSecondsRealtime(1);
         Liker.GetComponent<CanvasGroup>().alpha=1;
         yield return new WaitForSecondsRealtime(0.5f);
@@ -61,7 +67,7 @@ public class ResultCalculation : MonoBehaviour
                 while(FanGainIncrease<=FanGain)
                 {
                     GainTXT.text=string.Format("Fan Gained: {0}",FanGainIncrease);
-                    yield return new WaitForSecondsRealtime(.02f);
+                    yield return new WaitForSecondsRealtime(.001f);
                     if(FanGainIncrease<FanGain)
                     {
                         FanGainIncrease++;
@@ -73,7 +79,7 @@ public class ResultCalculation : MonoBehaviour
                 while(FanGainIncrease>=FanGain)
                 {
                     GainTXT.text=string.Format("Fan Gained: {0}",FanGainIncrease);
-                    yield return new WaitForSecondsRealtime(.02f);
+                    yield return new WaitForSecondsRealtime(.001f);
                     if(FanGainIncrease>FanGain)
                     {
                         FanGainIncrease--;
@@ -90,7 +96,7 @@ public class ResultCalculation : MonoBehaviour
         while(SalaryIncrease<=Salary)
         {
             SalaryTXT.text=string.Format("Income: {0}",SalaryIncrease);
-            yield return new WaitForSecondsRealtime(.002f);
+            yield return new WaitForSecondsRealtime(.0002f);
             if(SalaryIncrease<Salary)
             {
                 SalaryIncrease++;

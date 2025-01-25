@@ -7,14 +7,14 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     public Player_input player_input;
-    [SerializeField] Rigidbody2D rb;
+    public Rigidbody2D rb;
     private InputAction ascend;
     public float speed;
 
 
-    [SerializeField] Vector2 moveDir=Vector2.zero;
+    public Vector2 moveDir=Vector2.zero;
         private Vector2 smoothmove;
-    private Vector2 smoothvelocity;
+    public Vector2 smoothvelocity;
     private void OnEnable() {
         ascend=player_input.Player.ascend;
         ascend.Enable();
