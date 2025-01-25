@@ -13,6 +13,7 @@ public class ShopMangerScript : MonoBehaviour
     public string[] itemFunctions;
     public string[] itemDescriptions;
     public string[] itemRightDetails;
+    public string[] itemRightExplainations;
     public int selectedItemID = -1;
     void Start()
     {
@@ -35,42 +36,50 @@ public class ShopMangerScript : MonoBehaviour
         itemImages = new Sprite[6]; // Add images for your items here
         itemFunctions = new string[] {
             "",
-            "������",
-            "������Ӱ",
-            "Function for item 3",
-            "Function for item 4",
+            "灰流量",
+            "无限泡影",
+            "增殖的G",
+            "腔娱与惊\n谩之互(联网）",
             "Function for item 5"
         };
         itemDescriptions = new string[] {
             "",
-            "��պ���",
-            "����ʲô����",
-            "Description for item 3",
-            "Description for item 4",
+            "减少黑粉",
+            "清除恶评",
+            "粉丝增速up",
+            "黑粉数量upup",
             "Description for item 5"
         };
         itemRightDetails = new string[] {
             "",
-            "Right details for item 1",
-            "Right details for item 2",
-            "Right details for item 3",
-            "Right details for item 4",
+            "购买后立即生效，减少黑粉数量",
+            "手动触发，可以删除现在屏幕\n上的所有的恶评及aoe预兆",
+            "携带时自动触发，\n增加粉丝增长速度",
+            "大幅增加黑粉数量\n（同时也代表增加了总粉丝数）",
+            "Right details for item 5"
+        };
+        itemRightExplainations = new string[] {
+            "",
+            "采用高端5G技术\n——wireless impermanence! ",
+            "全局掌控灰色产业",
+            "你长大以后想干什么？\n -开发5G！！！",
+            "黑红也是红\n——米线山",
             "Right details for item 5"
         };
     }
 
     public void PurchaseItem(int itemID)
     {
-        // ������Ƿ��㹻
+        // 检查金币是否足够
         if (coins >= shopItems[2, itemID])
         {
-            // �۳����
+            // 扣除金币
             coins -= shopItems[2, itemID];
 
-            // ���ӿ��
+            // 增加库存
             shopItems[3, itemID]++;
 
-            // ���� UI
+            // 更新 UI
             CoinTxt.text = "Coins: " + coins.ToString();
             Debug.Log($"Item {itemID} purchased! Remaining coins: {coins}");
             Debug.Log($"Item {itemID} purchased! New Quantity: {shopItems[3, itemID]}");

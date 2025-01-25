@@ -1,4 +1,4 @@
-using Microsoft.Unity.VisualStudio.Editor;
+﻿using Microsoft.Unity.VisualStudio.Editor;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Search;
@@ -14,6 +14,7 @@ public class shop_UImanager : MonoBehaviour
     public Text quantityTexttoutput;
     public Text detailFunction;
     public Text rightDetailText;
+    public Text rightDetailExplanatins;
     public Text detailDescription;
     public GameObject ShopManager;
     public ShopMangerScript shopManagerScript;
@@ -35,18 +36,18 @@ public class shop_UImanager : MonoBehaviour
                 return;
             }
 
-            // ���������߼�...
+            // 继续后续逻辑...
         }
         shopManagerScript = ShopManager.GetComponent<ShopMangerScript>();
         for (int i = 0; i < itemButtons.Length; i++)
         {
-            int itemID = i + 1; // ���浱ǰѭ���� itemID
+            int itemID = i + 1; // 保存当前循环的 itemID
             Button button = itemButtons[i];
             Text priceText = button.transform.Find("Price").GetComponent<Text>();
             Text quantityText = button.transform.Find("Quantity").GetComponent<Text>();
 
 
-            // ʹ�þֲ��������� itemID
+            // 使用局部变量捕获 itemID
             int capturedID = itemID;
             button.onClick.AddListener(() => ShowDetails(capturedID));
         }
@@ -55,7 +56,7 @@ public class shop_UImanager : MonoBehaviour
     private void ShowDetails(int itemID)
     {
         Debug.Log($"ShowDetails called for itemID: {itemID}");
-        shopManagerScript.selectedItemID = itemID;
+        shopManagerScript.selectedItemID=itemID;
 
         // Access the ShopManagerScript
         if (shopManagerScript != null)
@@ -70,9 +71,10 @@ public class shop_UImanager : MonoBehaviour
             detailDescription.text = "" + shopManagerScript.itemDescriptions[itemID]; // Display the general description
 
             // Set the detailed right-side information for the item
-            rightDetailText.text = "��ϸ������" + shopManagerScript.itemRightDetails[itemID]; // Display detailed info
+            rightDetailText.text = "详细描述：" + shopManagerScript.itemRightDetails[itemID]; // Display detailed info
             priceTextoutput.text = "" + shopManagerScript.shopItems[2, itemID];
-            quantityTexttoutput.text = "" + shopManagerScript.shopItems[3, itemID];
+            quantityTexttoutput.text = ""+shopManagerScript.shopItems[3, itemID];
+            rightDetailExplanatins.text=""+shopManagerScript.itemRightExplainations[itemID];
         }
         else
         {
@@ -81,8 +83,7 @@ public class shop_UImanager : MonoBehaviour
     }
     public void OnPurchaseButtonClicked()
     {
-        if (shopManagerScript.selectedItemID != -1)
-        {
+        if(shopManagerScript.selectedItemID!=-1) {
             shopManagerScript.PurchaseItem(shopManagerScript.selectedItemID);
             Button selectedButton = itemButtons[shopManagerScript.selectedItemID - 1];
             Text quantityText = selectedButton.transform.Find("Quantity").GetComponent<Text>();
@@ -100,6 +101,6 @@ public class shop_UImanager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 }
