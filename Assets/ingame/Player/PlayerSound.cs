@@ -17,8 +17,10 @@ public class PlayerSound : MonoBehaviour
     void FixedUpdate()
     {  
         //float difference= player.gameObject.transform.position.y-lastPos.y;
-        //Debug.Log(player.rb.velocity.y);
-        vocalFry.pitch +=player.rb.velocity.y/200;
+
+       // var localVel= transform.InverseTransformDirection(player.rb.velocity);
+        //Debug.Log(localVel);
+        vocalFry.pitch +=player.smoothvelocity.y/50;
         //switch(player.rb.velocity.y)
         //{
         //    case >0:
