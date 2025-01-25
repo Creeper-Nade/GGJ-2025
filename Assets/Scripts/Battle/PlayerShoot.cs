@@ -25,7 +25,10 @@ namespace AmpFC.Battle
         }
 
         public void Shoot() {
-            
+            var bullet = Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
+            bullet.damage = 10f + 10f * currentCharge;
+            bullet.knockback = 10f + 10f * currentCharge;
+            bullet.speed = 10f + 10f * currentCharge;
         }
     }
 }
