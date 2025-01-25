@@ -6,7 +6,7 @@ public class Timer : MonoBehaviour
 {
     public ResultCalculation calculate;
     public Animator animator;
-    private float time=10f;
+    private float time=90f;
     private bool Zawarudo=false;
     private void Awake() {
         animator=GetComponent<Animator>();
