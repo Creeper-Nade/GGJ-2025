@@ -46,9 +46,9 @@ public class PlayerMovement : MonoBehaviour
     {
         smoothmove = Vector2.SmoothDamp(smoothmove, moveDir, ref smoothvelocity, 0.1f);
 
-        //rb.AddForce(new Vector2(0, smoothmove.y * speed) - rb.velocity, ForceMode2D.Impulse);
+        rb.AddForce(new Vector2(0, smoothmove.y * speed) - rb.velocity, ForceMode2D.Impulse);
 
-        rb.velocity = new Vector2(0, smoothmove.y * speed);
+        //rb.velocity = new Vector2(0, smoothmove.y * speed);
     }
 
     private void Knockback(float damage, float knockback, Vector2 direction)
