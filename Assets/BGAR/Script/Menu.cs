@@ -17,20 +17,26 @@ public class Menu : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene(1); 
+        SFXManager.Instance.PlaySFX(0);
+        
+        SceneTransition.Instance.LoadSceneWithFade("InGame");
+        SFXManager.Instance.ChecKbgm();
     }
 
 
     public void ExitGame()
     {
+        SFXManager.Instance.PlaySFX(0);
         Application.Quit();
     }
 
     public void Resume()
     {
+        SFXManager.Instance.PlaySFX(0);
         if (!string.IsNullOrEmpty(previousScene))
         {
-            SceneManager.LoadScene(previousScene);
+            SceneTransition.Instance.LoadSceneWithFade(previousScene);
+            SFXManager.Instance.ChecKbgm();
         }
         else
         {

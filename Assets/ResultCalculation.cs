@@ -116,7 +116,10 @@ public class ResultCalculation : MonoBehaviour
     IEnumerator intermission_cd()
     {
         yield return new WaitForSecondsRealtime(1);
-        SceneManager.LoadScene(2);
+
+        Time.timeScale = 1;
+
+        SceneManager.LoadScene("Rest");
     }
 
 }

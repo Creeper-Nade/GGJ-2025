@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class rest : MonoBehaviour
 {
-    public int currentlevel = 1;
+    public static int currentlevel = 1;
     public Image[] emptyHearts;
     public Image[] fullHearts;
 
@@ -28,36 +28,39 @@ public class rest : MonoBehaviour
     void Update()
     {
         Leveldisplay(currentlevel);
+        resetHeart();
     }
 
     public void NextLevelGame()
     {
-        SceneManager.LoadScene("Level" + currentlevel);
-        //加载下一关
+        SFXManager.Instance.PlaySFX(0);
+        SceneTransition.Instance.LoadSceneWithFade("InGame");
         currentlevel++;
     }
 
     public void LoadStore()
     {
-        SceneManager.LoadScene("Store");
-        //加载商店
+        SFXManager.Instance.PlaySFX(0);
+        SceneTransition.Instance.LoadSceneWithFade("Store");
     }
 
     public void LoadMenu()
     {
+        SFXManager.Instance.PlaySFX(0);
         Menu.SetPreviousScene(SceneManager.GetActiveScene().name);
-        SceneManager.LoadScene("Menu");
-        //加载商店
+        SceneTransition.Instance.LoadSceneWithFade("Menu");
     }
 
     public void LoadDebtPanel()
     {
+        SFXManager.Instance.PlaySFX(0);
         debtpanel.SetActive(true);
         //加载还债板
     }
 
     public void CloseDebtPanel()
     {
+        SFXManager.Instance.PlaySFX(1);
         debtpanel.SetActive(false);
     }
     private void InitializeHearts()
@@ -73,7 +76,7 @@ public class rest : MonoBehaviour
     {
         if(level < 1 || level > emptyHearts.Length)
         {
-            Debug.Log("关卡超出范围。");
+            Debug.Log("下一大轮。");
                 return;
         }
 
@@ -83,6 +86,14 @@ public class rest : MonoBehaviour
         {
             fullHearts[i].gameObject.SetActive(true);
             emptyHearts[i].gameObject.SetActive(false);
+        }
+    }
+
+    public void resetHeart()
+    {
+        if(currentlevel > 3)
+        {
+            currentlevel = 1;
         }
     }
 }
