@@ -1,23 +1,23 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class ShopManager : MonoBehaviour
 {
-    public GameObject shopUI;        // ÉÌµê UI µÄ GameObject£¨Èç Canvas »òÃæ°å£©
-    public AudioSource audioSource;  // ²¥·ÅÒôÀÖµÄ AudioSource
+    public GameObject shopUI;        // å•†åº— UI çš„ GameObjectï¼ˆå¦‚ Canvas æˆ–é¢æ¿ï¼‰
+    public AudioSource audioSource;  // æ’­æ”¾éŸ³ä¹çš„ AudioSource
 
-    // ¹Ø±ÕÉÌµê²¢Í£Ö¹ÒôÀÖµÄº¯Êı
+    // å…³é—­å•†åº—å¹¶åœæ­¢éŸ³ä¹çš„å‡½æ•°
     public void CloseShop()
     {
-        // ¹Ø±ÕÉÌµê UI£¨¿ÉÒÔ½ûÓÃ Canvas »òÕßÒş²Ø GameObject£©
+        // å…³é—­å•†åº— UIï¼ˆå¯ä»¥ç¦ç”¨ Canvas æˆ–è€…éšè— GameObjectï¼‰
         if (shopUI != null)
         {
-            shopUI.SetActive(false);  // Òş²ØÉÌµê UI
+            shopUI.SetActive(false);  // éšè—å•†åº— UI
         }
 
-        // Í£Ö¹ÒôÀÖ²¥·Å
+        // åœæ­¢éŸ³ä¹æ’­æ”¾
         if (audioSource != null && audioSource.isPlaying)
         {
-            audioSource.Stop(); // Í£Ö¹ÒôÆµ
+            audioSource.Stop(); // åœæ­¢éŸ³é¢‘
         }
 
         Debug.Log("Shop UI closed and music stopped.");
