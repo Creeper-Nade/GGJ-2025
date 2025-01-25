@@ -46,6 +46,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Knockback(float damage, float knockback, Vector2 direction)
     {
-        rb.AddForce(direction.normalized * knockback, ForceMode2D.Impulse);
+        var force = direction.normalized * knockback;
+        var constrainedForce = new Vector2(0, force.y);
+        rb.AddForce(constrainedForce, ForceMode2D.Impulse);
     }
 }
