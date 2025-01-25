@@ -12,6 +12,7 @@ public class CollisionDetection : MonoBehaviour
     private void Awake() {
         player=GameObject.FindGameObjectWithTag("Player");
         graph=GameObject.FindObjectOfType<Graph_tendency>();
+        DataManager.PreviousFanSum=DataManager.FanSum;
         //data=GameObject.FindObjectOfType<DataManager>().GetComponent<DataManager>();
         //data.FanTime=data.MaxFanTime;
     }
