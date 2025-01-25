@@ -32,21 +32,21 @@ public class rest : MonoBehaviour
 
     public void NextLevelGame()
     {
-        SceneManager.LoadScene("Level" + currentlevel);
+        SceneTransition.Instance.LoadSceneWithFade("InGame");
         //加载下一关
         currentlevel++;
     }
 
     public void LoadStore()
     {
-        SceneManager.LoadScene("Store");
+        SceneTransition.Instance.LoadSceneWithFade("Store");
         //加载商店
     }
 
     public void LoadMenu()
     {
         Menu.SetPreviousScene(SceneManager.GetActiveScene().name);
-        SceneManager.LoadScene("Menu");
+        SceneTransition.Instance.LoadSceneWithFade("Menu");
         //加载商店
     }
 

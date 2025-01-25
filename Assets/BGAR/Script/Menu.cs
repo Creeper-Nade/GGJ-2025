@@ -17,7 +17,7 @@ public class Menu : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene(1); 
+        SceneTransition.Instance.LoadSceneWithFade("InGame");
     }
 
 
@@ -30,7 +30,7 @@ public class Menu : MonoBehaviour
     {
         if (!string.IsNullOrEmpty(previousScene))
         {
-            SceneManager.LoadScene(previousScene);
+            SceneTransition.Instance.LoadSceneWithFade(previousScene);
         }
         else
         {
