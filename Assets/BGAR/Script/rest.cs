@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class rest : MonoBehaviour
 {
-    public int currentlevel = 1;
+    public static int currentlevel = 1;
     public Image[] emptyHearts;
     public Image[] fullHearts;
 
@@ -28,6 +28,7 @@ public class rest : MonoBehaviour
     void Update()
     {
         Leveldisplay(currentlevel);
+        resetHeart();
     }
 
     public void NextLevelGame()
@@ -75,7 +76,7 @@ public class rest : MonoBehaviour
     {
         if(level < 1 || level > emptyHearts.Length)
         {
-            Debug.Log("关卡超出范围。");
+            Debug.Log("下一大轮。");
                 return;
         }
 
@@ -85,6 +86,14 @@ public class rest : MonoBehaviour
         {
             fullHearts[i].gameObject.SetActive(true);
             emptyHearts[i].gameObject.SetActive(false);
+        }
+    }
+
+    public void resetHeart()
+    {
+        if(currentlevel > 3)
+        {
+            currentlevel = 1;
         }
     }
 }

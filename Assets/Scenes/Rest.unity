@@ -3994,7 +3994,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff60b38fed4721449b34062b40409d4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentlevel: 1
   emptyHearts:
   - {fileID: 353645111}
   - {fileID: 478830040}
@@ -4018,6 +4017,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debtSlider: {fileID: 311697979}
   debtText: {fileID: 1412405735}
+  currentDebt: 1000
+  maxDebt: 10000
 --- !u!1 &1972696902
 GameObject:
   m_ObjectHideFlags: 0
