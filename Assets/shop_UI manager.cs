@@ -35,18 +35,18 @@ public class shop_UImanager : MonoBehaviour
                 return;
             }
 
-            // ¼ÌÐøºóÐøÂß¼­...
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß¼ï¿½...
         }
         shopManagerScript = ShopManager.GetComponent<ShopMangerScript>();
         for (int i = 0; i < itemButtons.Length; i++)
         {
-            int itemID = i + 1; // ±£´æµ±Ç°Ñ­»·µÄ itemID
+            int itemID = i + 1; // ï¿½ï¿½ï¿½æµ±Ç°Ñ­ï¿½ï¿½ï¿½ï¿½ itemID
             Button button = itemButtons[i];
             Text priceText = button.transform.Find("Price").GetComponent<Text>();
             Text quantityText = button.transform.Find("Quantity").GetComponent<Text>();
 
 
-            // Ê¹ÓÃ¾Ö²¿±äÁ¿²¶»ñ itemID
+            // Ê¹ï¿½Ã¾Ö²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ itemID
             int capturedID = itemID;
             button.onClick.AddListener(() => ShowDetails(capturedID));
         }
@@ -55,7 +55,7 @@ public class shop_UImanager : MonoBehaviour
     private void ShowDetails(int itemID)
     {
         Debug.Log($"ShowDetails called for itemID: {itemID}");
-        shopManagerScript.selectedItemID=itemID;
+        shopManagerScript.selectedItemID = itemID;
 
         // Access the ShopManagerScript
         if (shopManagerScript != null)
@@ -70,9 +70,9 @@ public class shop_UImanager : MonoBehaviour
             detailDescription.text = "" + shopManagerScript.itemDescriptions[itemID]; // Display the general description
 
             // Set the detailed right-side information for the item
-            rightDetailText.text = "ÏêÏ¸ÃèÊö£º" + shopManagerScript.itemRightDetails[itemID]; // Display detailed info
+            rightDetailText.text = "ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" + shopManagerScript.itemRightDetails[itemID]; // Display detailed info
             priceTextoutput.text = "" + shopManagerScript.shopItems[2, itemID];
-            quantityTexttoutput.text = ""+shopManagerScript.shopItems[3, itemID];
+            quantityTexttoutput.text = "" + shopManagerScript.shopItems[3, itemID];
         }
         else
         {
@@ -81,7 +81,8 @@ public class shop_UImanager : MonoBehaviour
     }
     public void OnPurchaseButtonClicked()
     {
-        if(shopManagerScript.selectedItemID!=-1) {
+        if (shopManagerScript.selectedItemID != -1)
+        {
             shopManagerScript.PurchaseItem(shopManagerScript.selectedItemID);
             Button selectedButton = itemButtons[shopManagerScript.selectedItemID - 1];
             Text quantityText = selectedButton.transform.Find("Quantity").GetComponent<Text>();
@@ -99,6 +100,6 @@ public class shop_UImanager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

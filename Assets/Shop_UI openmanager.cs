@@ -5,12 +5,14 @@ using UnityEngine;
 public class Shop_UImanager : MonoBehaviour
 {
     private GameObject Shop_UI;
+
     void Start()
     {
         Shop_UI = GameObject.Find("Shop_UI");
         Shop_UI.SetActive(false);
     }
-   public void OnClickShopHandler()
+
+    public void OnClickShopHandler()
     {
         Shop_UI.SetActive(Shop_UI.activeSelf == true ? false : true);
     }
