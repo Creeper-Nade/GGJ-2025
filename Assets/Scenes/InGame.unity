@@ -147,8 +147,8 @@ Transform:
   m_GameObject: {fileID: 144426867}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.4, y: 0.84, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 3, y: 0.84, z: 0}
+  m_LocalScale: {x: 0.9, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1269684856}
@@ -324,7 +324,7 @@ LineRenderer:
     colorGradient:
       serializedVersion: 2
       key0: {r: 0.9803922, g: 0.8588236, b: 0.41176474, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 0}
+      key1: {r: 0.41960788, g: 0.8431373, b: 0.93725497, a: 0}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -443,7 +443,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  speed: 20
+  speed: 15
   moveDir: {x: 0, y: 0}
   smoothmove: {x: 0, y: 0}
   smoothvelocity: {x: 0, y: 0}
@@ -492,7 +492,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 5.89
   m_AngularDrag: 0.05
-  m_GravityScale: 40
+  m_GravityScale: 30
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -943,7 +943,7 @@ GameObject:
   - component: {fileID: 1132365817}
   m_Layer: 0
   m_Name: collider
-  m_TagString: Untagged
+  m_TagString: Boarder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1122,6 +1122,7 @@ GameObject:
   - component: {fileID: 1451986034}
   - component: {fileID: 1451986033}
   - component: {fileID: 1451986035}
+  - component: {fileID: 1451986036}
   m_Layer: 0
   m_Name: projectile_generation
   m_TagString: Untagged
@@ -1169,7 +1170,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afa470accdbe24db1a9dfaa1860e939d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sequence: {fileID: 0}
+  sequence: {fileID: 11400000, guid: 258cc1f89c0b7f043a970e416fd18808, type: 2}
+--- !u!114 &1451986036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1451986032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16ef5dd33ca452b46a84c1fe6f7859b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sequencePlayers: []
 --- !u!1 &1722996875
 GameObject:
   m_ObjectHideFlags: 0
@@ -1211,7 +1225,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 797509124930761785, guid: b5a08819a30063e4ab9e9ef9aa38ddf7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 797509124930761785, guid: b5a08819a30063e4ab9e9ef9aa38ddf7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1266,10 +1280,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1806384337440376726, guid: f2e929ed2dca81f41a2a2b0d0adde2b7, type: 3}
-      propertyPath: m_Alpha
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3391929877670888527, guid: f2e929ed2dca81f41a2a2b0d0adde2b7, type: 3}
       propertyPath: m_Camera
       value: 

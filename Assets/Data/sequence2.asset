@@ -13,7 +13,15 @@ MonoBehaviour:
   m_Name: sequence2
   m_EditorClassIdentifier: 
   attacks:
-  - attack: {fileID: 11400000, guid: cc4af569ba72449febd5f78a2ed12751, type: 2}
+  - attack: {fileID: 11400000, guid: 768bc3b8afe1f1343bc601ec5ea055fb, type: 2}
+    position: {x: -8, y: -2, z: 0}
+    rotation: {x: 0, y: 0, z: 90}
+    nextPlayType: 0
+  - attack: {fileID: 11400000, guid: 768bc3b8afe1f1343bc601ec5ea055fb, type: 2}
+    position: {x: -8, y: 2, z: 0}
+    rotation: {x: 0, y: 0, z: 90}
+    nextPlayType: 0
+  - attack: {fileID: 11400000, guid: 768bc3b8afe1f1343bc601ec5ea055fb, type: 2}
     position: {x: -8, y: 0, z: 0}
-    rotation: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 90}
     nextPlayType: 0

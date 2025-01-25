@@ -28,7 +28,7 @@ namespace AmpFC.Battle
     {
         public List<AttackItem> attacks;
         private int currentAttackIndex = 0;
-        private bool running = false;
+        public bool running = false;
 
         public void Initialize()
         {

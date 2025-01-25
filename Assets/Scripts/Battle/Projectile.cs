@@ -49,6 +49,10 @@ namespace AmpFC.Battle
                 onEnemyHit?.Invoke(damage, knockback, direction);
                 Destroy(gameObject);
             }
+            else if (collision.collider.CompareTag("Boarder"))
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }
