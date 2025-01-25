@@ -35,16 +35,15 @@ namespace AmpFC.Battle
             Destroy(gameObject);
         }
 
-        private void OnTriggerEnter2D(Collider2D collision)
+        private void OnCollisionEnter2D(Collision2D collision)
         {
-
-            if (collision.CompareTag("Player") && !is_friendly)
+            if (collision.collider.CompareTag("Player") && !is_friendly)
             {
                 var direction = collision.transform.position - transform.position;
                 onPlayerHit?.Invoke(damage, knockback, direction);
                 Destroy(gameObject);
             }
-            else if (collision.CompareTag("Enemy"))
+            else if (collision.collider.CompareTag("Enemy"))
             {
                 var direction = collision.transform.position - transform.position;
                 onEnemyHit?.Invoke(damage, knockback, direction);
