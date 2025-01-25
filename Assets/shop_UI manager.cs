@@ -1,4 +1,4 @@
-using Microsoft.Unity.VisualStudio.Editor;
+Ôªøusing Microsoft.Unity.VisualStudio.Editor;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Search;
@@ -14,6 +14,7 @@ public class shop_UImanager : MonoBehaviour
     public Text quantityTexttoutput;
     public Text detailFunction;
     public Text rightDetailText;
+    public Text rightDetailExplanatins;
     public Text detailDescription;
     public GameObject ShopManager;
     public ShopMangerScript shopManagerScript;
@@ -35,18 +36,18 @@ public class shop_UImanager : MonoBehaviour
                 return;
             }
 
-            // ºÃ–¯∫Û–¯¬ﬂº≠...
+            // ÁªßÁª≠ÂêéÁª≠ÈÄªËæë...
         }
         shopManagerScript = ShopManager.GetComponent<ShopMangerScript>();
         for (int i = 0; i < itemButtons.Length; i++)
         {
-            int itemID = i + 1; // ±£¥Êµ±«∞—≠ª∑µƒ itemID
+            int itemID = i + 1; // ‰øùÂ≠òÂΩìÂâçÂæ™ÁéØÁöÑ itemID
             Button button = itemButtons[i];
             Text priceText = button.transform.Find("Price").GetComponent<Text>();
             Text quantityText = button.transform.Find("Quantity").GetComponent<Text>();
 
 
-            //  π”√æ÷≤ø±‰¡ø≤∂ªÒ itemID
+            // ‰ΩøÁî®Â±ÄÈÉ®ÂèòÈáèÊçïËé∑ itemID
             int capturedID = itemID;
             button.onClick.AddListener(() => ShowDetails(capturedID));
         }
@@ -70,9 +71,10 @@ public class shop_UImanager : MonoBehaviour
             detailDescription.text = "" + shopManagerScript.itemDescriptions[itemID]; // Display the general description
 
             // Set the detailed right-side information for the item
-            rightDetailText.text = "œÍœ∏√Ë ˆ£∫" + shopManagerScript.itemRightDetails[itemID]; // Display detailed info
+            rightDetailText.text = "ËØ¶ÁªÜÊèèËø∞Ôºö" + shopManagerScript.itemRightDetails[itemID]; // Display detailed info
             priceTextoutput.text = "" + shopManagerScript.shopItems[2, itemID];
             quantityTexttoutput.text = ""+shopManagerScript.shopItems[3, itemID];
+            rightDetailExplanatins.text=""+shopManagerScript.itemRightExplainations[itemID];
         }
         else
         {

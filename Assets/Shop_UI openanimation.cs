@@ -1,26 +1,26 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Shop_UIopenanimation : MonoBehaviour
 {
-    public Animator shopAnimator;  // ÒıÓÃ Shop UI µÄ Animator
-    public GameObject shopUI;      // ÒıÓÃ Shop UI GameObject£¨Í¨³£ÊÇ Canvas »ò Panel£©
-    private bool shopUIShown = false;  // ±ê¼Ç Shop UI ÊÇ·ñÒÑ¾­ÏÔÊ¾¹ı
+    public Animator shopAnimator;  // å¼•ç”¨ Shop UI çš„ Animator
+    public GameObject shopUI;      // å¼•ç”¨ Shop UI GameObjectï¼ˆé€šå¸¸æ˜¯ Canvas æˆ– Panelï¼‰
+    private bool shopUIShown = false;  // æ ‡è®° Shop UI æ˜¯å¦å·²ç»æ˜¾ç¤ºè¿‡
 
-    // °ó¶¨µ½°´Å¥µÄµã»÷ÊÂ¼ş
+    // ç»‘å®šåˆ°æŒ‰é’®çš„ç‚¹å‡»äº‹ä»¶
     public void ShowShopUI()
     {
-        // Èç¹û Shop UI ÒÑ¾­ÏÔÊ¾¹ı£¬Ôò²»ÔÙ½øĞĞÈÎºÎ²Ù×÷
+        // å¦‚æœ Shop UI å·²ç»æ˜¾ç¤ºè¿‡ï¼Œåˆ™ä¸å†è¿›è¡Œä»»ä½•æ“ä½œ
         if (shopUIShown) return;
 
-        // ¼¤»î Shop UI£¨Èç¹ûÖ®Ç°Òş²Ø£©
+        // æ¿€æ´» Shop UIï¼ˆå¦‚æœä¹‹å‰éšè—ï¼‰
         shopUI.SetActive(true);
 
-        // ´¥·¢¶¯»­²¥·Å
+        // è§¦å‘åŠ¨ç”»æ’­æ”¾
         shopAnimator.SetTrigger("ShowShopUI");
 
-        // ±ê¼Ç Shop UI ÒÑ¾­ÏÔÊ¾¹ı
+        // æ ‡è®° Shop UI å·²ç»æ˜¾ç¤ºè¿‡
         shopUIShown = true;
 
         Debug.Log("Shop UI shown and animation started.");
