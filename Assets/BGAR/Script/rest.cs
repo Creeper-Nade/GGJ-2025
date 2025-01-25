@@ -32,32 +32,34 @@ public class rest : MonoBehaviour
 
     public void NextLevelGame()
     {
+        SFXManager.Instance.PlaySFX(0);
         SceneTransition.Instance.LoadSceneWithFade("InGame");
-        //加载下一关
         currentlevel++;
     }
 
     public void LoadStore()
     {
+        SFXManager.Instance.PlaySFX(0);
         SceneTransition.Instance.LoadSceneWithFade("Store");
-        //加载商店
     }
 
     public void LoadMenu()
     {
+        SFXManager.Instance.PlaySFX(0);
         Menu.SetPreviousScene(SceneManager.GetActiveScene().name);
         SceneTransition.Instance.LoadSceneWithFade("Menu");
-        //加载商店
     }
 
     public void LoadDebtPanel()
     {
+        SFXManager.Instance.PlaySFX(0);
         debtpanel.SetActive(true);
         //加载还债板
     }
 
     public void CloseDebtPanel()
     {
+        SFXManager.Instance.PlaySFX(1);
         debtpanel.SetActive(false);
     }
     private void InitializeHearts()
