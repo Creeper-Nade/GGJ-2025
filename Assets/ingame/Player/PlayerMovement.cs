@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
+using AmpFC.Battle;
+
 public class PlayerMovement : MonoBehaviour
 {
     public Player_input player_input;
@@ -11,33 +13,41 @@ public class PlayerMovement : MonoBehaviour
     private InputAction ascend;
     public float speed;
 
-
     [SerializeField] Vector2 moveDir=Vector2.zero;
-        private Vector2 smoothmove;
+    private Vector2 smoothmove;
     private Vector2 smoothvelocity;
+
     private void OnEnable() {
         ascend=player_input.Player.ascend;
         ascend.Enable();
+        Projectile.onPlayerHit += Knockback;
     }
+
     private void OnDisable() {
         ascend.Disable();
+        Projectile.onPlayerHit -= Knockback;
     }
+
     // Update is called once per frame
     private void Awake() {
         player_input=new Player_input();
         rb=this.GetComponent<Rigidbody2D>();
     }
+
     void Update()
     {
-        moveDir=ascend.ReadValue<Vector2>(); 
+        moveDir = ascend.ReadValue<Vector2>(); 
     }
-    private void FixedUpdate() {
-        //if(moveDir.y>0 && speed<Max_speed)
-        //speed+=acceleration;
-        //else if (speed>5)
-        //speed-=acceleration;
-        smoothmove=Vector2.SmoothDamp(smoothmove,moveDir,ref smoothvelocity,0.1f);
-        rb.velocity=new Vector2(0,smoothmove.y*speed);
 
+    private void FixedUpdate() {
+        smoothmove = Vector2.SmoothDamp(smoothmove,moveDir,ref smoothvelocity,0.1f);
+        rb.velocity = new Vector2(0,smoothmove.y*speed);
+    }
+
+    private void Knockback(float damage, float knockback, Vector2 direction)
+    {
+        var force = direction.normalized * knockback;
+        var constrainedForce = new Vector2(0, force.y);
+        rb.AddForce(constrainedForce, ForceMode2D.Impulse);
     }
 }
