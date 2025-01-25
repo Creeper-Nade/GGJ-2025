@@ -14,9 +14,6 @@ public class PlayerSound : MonoBehaviour
     private void Start() {
         vocalFry.Play();
     }
-    private void Update() {
-        
-    }
     void FixedUpdate()
     {  
         //float difference= player.gameObject.transform.position.y-lastPos.y;

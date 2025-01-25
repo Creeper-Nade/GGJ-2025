@@ -42,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate() {
         smoothmove = Vector2.SmoothDamp(smoothmove,moveDir,ref smoothvelocity,0.1f);
         rb.velocity = new Vector2(0,smoothmove.y*speed);
+        Debug.Log(rb.velocity);
     }
 
     private void Knockback(float damage, float knockback, Vector2 direction)
