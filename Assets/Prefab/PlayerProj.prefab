@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2451682452778273613}
   - component: {fileID: 6072087227460249958}
   m_Layer: 0
-  m_Name: Projectile
+  m_Name: PlayerProj
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99,10 +99,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  lifeTime: 12
+  lifeTime: 8
   damage: 0
   range: 0
   knockback: 2
+  is_friendly: 1
 --- !u!58 &6072087227460249958
 CircleCollider2D:
   m_ObjectHideFlags: 0

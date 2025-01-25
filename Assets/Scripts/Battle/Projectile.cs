@@ -16,6 +16,7 @@ namespace AmpFC.Battle
         public float damage;
         public float range;
         public float knockback;
+        public bool is_friendly;
 
         private void Start()
         {
@@ -37,7 +38,7 @@ namespace AmpFC.Battle
         private void OnTriggerEnter2D(Collider2D collision)
         {
 
-            if (collision.CompareTag("Player"))
+            if (collision.CompareTag("Player") && !is_friendly)
             {
                 var direction = collision.transform.position - transform.position;
                 onPlayerHit?.Invoke(damage, knockback, direction);
