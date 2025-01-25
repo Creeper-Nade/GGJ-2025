@@ -43,10 +43,14 @@ namespace AmpFC.Battle
                 onPlayerHit?.Invoke(damage, knockback, direction);
                 Destroy(gameObject);
             }
-            else if (collision.collider.CompareTag("Enemy"))
+            else if (collision.collider.CompareTag("Enemy") && is_friendly)
             {
                 var direction = collision.transform.position - transform.position;
                 onEnemyHit?.Invoke(damage, knockback, direction);
+                Destroy(gameObject);
+            }
+            else if (collision.collider.CompareTag("Boarder"))
+            {
                 Destroy(gameObject);
             }
         }

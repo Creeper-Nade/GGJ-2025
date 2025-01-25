@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Event
   - Enemy
+  - enemy
+  - Boarder
   layers:
   - Default
   - TransparentFX

@@ -67,6 +67,6 @@ public class PlayerMovement : MonoBehaviour
         }
         var constrainedForce = new Vector2(0, force.y);
         Debug.Log("Apply knockback: " + constrainedForce);
-        rb.AddForce(constrainedForce * 500, ForceMode2D.Force);
+        rb.AddForce(constrainedForce * 100, ForceMode2D.Force);
     }
 }
