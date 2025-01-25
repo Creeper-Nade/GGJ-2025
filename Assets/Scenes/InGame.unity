@@ -226,6 +226,7 @@ GameObject:
   - component: {fileID: 433899999}
   - component: {fileID: 433900001}
   - component: {fileID: 433900000}
+  - component: {fileID: 433900002}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Player
@@ -647,6 +648,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &433900002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 433899991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1263bf379a9ba4e8095c5531d3150f4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chargingTime: 1
+  isCharging: 0
+  bulletPrefab: {fileID: 2451682452778273613, guid: 2fe287dcbf19d8f4cb73c38b1ab5b75a, type: 3}
+  bulletSpawn: {fileID: 433899995}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
