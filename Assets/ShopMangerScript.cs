@@ -35,16 +35,16 @@ public class ShopMangerScript : MonoBehaviour
         itemImages = new Sprite[6]; // Add images for your items here
         itemFunctions = new string[] {
             "",
-            "»ÒÁ÷Á¿",
-            "ÎÞÏÞÅÝÓ°",
+            "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½",
+            "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó°",
             "Function for item 3",
             "Function for item 4",
             "Function for item 5"
         };
         itemDescriptions = new string[] {
             "",
-            "Çå¿ÕºÚÆÁ",
-            "ÆäËûÊ²Ã´¹¦ÄÜ",
+            "ï¿½ï¿½Õºï¿½ï¿½ï¿½",
+            "ï¿½ï¿½ï¿½ï¿½Ê²Ã´ï¿½ï¿½ï¿½ï¿½",
             "Description for item 3",
             "Description for item 4",
             "Description for item 5"
@@ -61,16 +61,16 @@ public class ShopMangerScript : MonoBehaviour
 
     public void PurchaseItem(int itemID)
     {
-        // ¼ì²é½ð±ÒÊÇ·ñ×ã¹»
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ã¹»
         if (coins >= shopItems[2, itemID])
         {
-            // ¿Û³ý½ð±Ò
+            // ï¿½Û³ï¿½ï¿½ï¿½ï¿½
             coins -= shopItems[2, itemID];
 
-            // Ôö¼Ó¿â´æ
+            // ï¿½ï¿½ï¿½Ó¿ï¿½ï¿½
             shopItems[3, itemID]++;
 
-            // ¸üÐÂ UI
+            // ï¿½ï¿½ï¿½ï¿½ UI
             CoinTxt.text = "Coins: " + coins.ToString();
             Debug.Log($"Item {itemID} purchased! Remaining coins: {coins}");
             Debug.Log($"Item {itemID} purchased! New Quantity: {shopItems[3, itemID]}");

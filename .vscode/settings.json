@@ -56,5 +56,12 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "GGJ-2025.sln"
+    "dotnet.defaultSolution": "GGJ-2025.sln",
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "editor.defaultFormatter": "ms-dotnettools.csdevkit",
+    "files.autoSave": "onFocusChange",
+    "[csharp]": {
+        "editor.defaultFormatter": "ms-dotnettools.csharp"
+    },
 }
