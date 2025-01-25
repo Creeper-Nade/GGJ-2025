@@ -43,7 +43,6 @@ namespace AmpFC.Battle
         /// <returns></returns>
         private bool ExecuteNextAttack()
         {
-            Debug.Log(currentAttackIndex);
             if (currentAttackIndex < attacks.Count)
             {
                 AttackItem attackItem = attacks[currentAttackIndex];
@@ -60,16 +59,22 @@ namespace AmpFC.Battle
                 }
                 else
                 {
-                    attack.SubscribeToOnAttackExecuted(() =>
-                    {
-                        if (running)
-                            ExecuteNextAttack();
-                    });
+                    attack.UnsubscribeAllToOnAttackExecuted();
+                    attack.SubscribeToOnAttackExecuted(TryNext);
                 }
             }
-            //running = false;
-            Debug.Log(currentAttackIndex < attacks.Count);
-            return currentAttackIndex < attacks.Count;
+            else
+            {
+                running = false;
+            }
+            Debug.Log("Running: " + running);
+            return running;
+        }
+
+        private void TryNext()
+        {
+            if (running)
+                ExecuteNextAttack();
         }
 
         /// <summary>

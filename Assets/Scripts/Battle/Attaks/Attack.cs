@@ -80,5 +80,10 @@ namespace AmpFC.Battle
         {
             OnAttackExecuted -= attackEvent;
         }
+
+        public void UnsubscribeAllToOnAttackExecuted()
+        {
+            OnAttackExecuted = null;
+        }
     }
 }
