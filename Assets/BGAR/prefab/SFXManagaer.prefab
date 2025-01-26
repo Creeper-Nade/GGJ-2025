@@ -148,3 +148,4 @@ MonoBehaviour:
   bgmClips:
   - {fileID: 8300000, guid: 2cec8bccd9114fe40a46072f85262026, type: 3}
   - {fileID: 8300000, guid: 9882c0ab2f507f843be82a4dd432b058, type: 3}
+  - {fileID: 8300000, guid: 053cedc00c8207a46855e164f4392187, type: 3}

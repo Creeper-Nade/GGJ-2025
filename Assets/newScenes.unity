@@ -1203,7 +1203,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0023e74f7646c04ca98e967eb58b540, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coins: 0
   CoinTxt: {fileID: 0}
   itemFunctions: []
   itemDescriptions: []
@@ -2219,14 +2218,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2256428777423531895, guid: 47419606ff4c2ce43a78e4836c5ceddd, type: 3}
-      propertyPath: bgmClips.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2256428777423531895, guid: 47419606ff4c2ce43a78e4836c5ceddd, type: 3}
-      propertyPath: bgmClips.Array.data[2]
-      value: 
-      objectReference: {fileID: 8300000, guid: 053cedc00c8207a46855e164f4392187, type: 3}
     - target: {fileID: 8878125383198744043, guid: 47419606ff4c2ce43a78e4836c5ceddd, type: 3}
       propertyPath: m_Name
       value: SFXManagaer
@@ -3197,7 +3188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a2ac570dc88bbb4b9a50a237b758a4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audiosource: {fileID: 278383294}
+  audioSource: {fileID: 0}
 --- !u!1 &1152631333
 GameObject:
   m_ObjectHideFlags: 0
@@ -3882,7 +3873,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0023e74f7646c04ca98e967eb58b540, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coins: 10000
   CoinTxt: {fileID: 1113884421}
   itemFunctions:
   - 666
