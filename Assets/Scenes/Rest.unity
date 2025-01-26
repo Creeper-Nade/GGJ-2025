@@ -4987,6 +4987,7 @@ MonoBehaviour:
   debtpanel: {fileID: 1406201787}
   pinkCha: {fileID: 253867179}
   blueCha: {fileID: 1643559677}
+  debtSliderController: {fileID: 1848077713}
 --- !u!114 &1848077713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5001,8 +5002,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debtSlider: {fileID: 311697979}
   debtText: {fileID: 1412405735}
-  currentDebt: 1000
-  maxDebt: 10000
+  maxDebt: 3000
 --- !u!1 &1852755559
 GameObject:
   m_ObjectHideFlags: 0
@@ -5436,6 +5436,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1991612424}
   m_CullTransparentMesh: 1
+--- !u!1 &2071399304
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2071399305}
+  m_Layer: 0
+  m_Name: DebtPay
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2071399305
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2071399304}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 813.0307, y: 635.5834, z: -12.2051735}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &9033808349123117915
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5542,3 +5573,4 @@ SceneRoots:
   - {fileID: 1375960099}
   - {fileID: 9033808349123117915}
   - {fileID: 1272945564}
+  - {fileID: 2071399305}
