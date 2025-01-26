@@ -7,6 +7,7 @@ public class InputValidator : MonoBehaviour
     public TMP_InputField inputField; // 输入框
     public Button submitButton; // 提交按钮
     public TMP_Text currentMoneyText; // 显示当前金钱的文本
+    public TMP_Text PayText; 
     //public float currentMoney = DataManager.money; // 当前的金钱
 
     public DebtSliderController debtSliderController;
@@ -16,6 +17,7 @@ public class InputValidator : MonoBehaviour
     {
         // 初始化显示当前金钱
         UpdateCurrentMoneyText();
+        UpdateMaxtDebtText();
 
         // 限制输入框为整数
         inputField.contentType = TMP_InputField.ContentType.IntegerNumber;
@@ -35,7 +37,9 @@ public class InputValidator : MonoBehaviour
                 // 在这里执行扣除金钱或其他逻辑
                 DataManager.money -= inputValue;
                 UpdateCurrentMoneyText(); // 更新当前金钱显示
+               
                 debtSliderController.AddDebt(inputValue);
+                UpdateMaxtDebtText();
             }
             else
             {
@@ -51,6 +55,12 @@ public class InputValidator : MonoBehaviour
     void UpdateCurrentMoneyText()
     {
         // 更新显示当前金钱的文本
-        currentMoneyText.text = "Current Money: " + DataManager.money;
+        currentMoneyText.text = "Money: " + DataManager.money;
+    }
+
+    void UpdateMaxtDebtText()
+    {
+        // 更新显示当前金钱的文本
+        PayText.text = "You need to pay: " + (debtSliderController.maxDebt - DebtSliderController.currentDebt);
     }
 }

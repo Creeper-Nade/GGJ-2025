@@ -8,7 +8,7 @@ public class DataManager : MonoBehaviour
     public static int Haters;
     public static int Likers;
     public static int PreviousFanSum;
-    public static float money;
+    public static float money = 1000f;
     public static float Debt;
     public static float FanTime = 0.5f;
     public static float UnsubTime = FanTime;
