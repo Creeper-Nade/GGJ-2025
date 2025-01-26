@@ -23,5 +23,6 @@ MonoBehaviour:
     nextPlayType: 0
   - attack: {fileID: 11400000, guid: cc4af569ba72449febd5f78a2ed12751, type: 2}
     position: {x: -8, y: -1, z: 0}
-    rotation: {x: 0, y: 0, z: 270}
+    rotation: {x: 0, y: 0, z: 90}
     nextPlayType: 0
+  running: 1

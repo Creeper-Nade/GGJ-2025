@@ -121,8 +121,7 @@ public class ResultCalculation : MonoBehaviour
         yield return new WaitForSecondsRealtime(1);
 
         Time.timeScale = 1;
-
-        SceneManager.LoadScene("Rest");
+        SceneTransition.Instance.LoadSceneWithFade("Rest");
     }
 
 }
