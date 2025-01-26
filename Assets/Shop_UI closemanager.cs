@@ -12,6 +12,7 @@ public class ShopManager : MonoBehaviour
         if (shopUI != null)
         {
             shopUI.SetActive(false);  // 隐藏商店 UI
+            SceneTransition.Instance.LoadSceneWithFade("Rest");
         }
 
         // 停止音乐播放
