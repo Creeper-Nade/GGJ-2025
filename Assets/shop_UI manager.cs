@@ -1,10 +1,5 @@
-﻿using Microsoft.Unity.VisualStudio.Editor;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Search;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
 
 public class shop_UImanager : MonoBehaviour
 {
@@ -56,7 +51,7 @@ public class shop_UImanager : MonoBehaviour
     private void ShowDetails(int itemID)
     {
         Debug.Log($"ShowDetails called for itemID: {itemID}");
-        shopManagerScript.selectedItemID=itemID;
+        shopManagerScript.selectedItemID = itemID;
 
         // Access the ShopManagerScript
         if (shopManagerScript != null)
@@ -73,8 +68,8 @@ public class shop_UImanager : MonoBehaviour
             // Set the detailed right-side information for the item
             rightDetailText.text = "" + shopManagerScript.itemRightDetails[itemID]; // Display detailed info
             priceTextoutput.text = "" + shopManagerScript.shopItems[2, itemID];
-            quantityTexttoutput.text = ""+shopManagerScript.shopItems[3, itemID];
-            rightDetailExplanatins.text=""+shopManagerScript.itemRightExplainations[itemID];
+            quantityTexttoutput.text = "" + shopManagerScript.shopItems[3, itemID];
+            rightDetailExplanatins.text = "" + shopManagerScript.itemRightExplainations[itemID];
         }
         else
         {
@@ -83,7 +78,8 @@ public class shop_UImanager : MonoBehaviour
     }
     public void OnPurchaseButtonClicked()
     {
-        if(shopManagerScript.selectedItemID!=-1) {
+        if (shopManagerScript.selectedItemID != -1)
+        {
             shopManagerScript.PurchaseItem(shopManagerScript.selectedItemID);
             Button selectedButton = itemButtons[shopManagerScript.selectedItemID - 1];
             Text quantityText = selectedButton.transform.Find("Quantity").GetComponent<Text>();
@@ -101,6 +97,6 @@ public class shop_UImanager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
