@@ -8,61 +8,64 @@ public class CollisionDetection : MonoBehaviour
 
     public Graph_tendency graph;
     public GameObject player;
-    private List<Collider2D> collisionList= new List<Collider2D>();
-    private void Awake() {
-        player=GameObject.FindGameObjectWithTag("Player");
-        graph=GameObject.FindObjectOfType<Graph_tendency>();
-        DataManager.PreviousFanSum=DataManager.FanSum;
+    private List<Collider2D> collisionList = new List<Collider2D>();
+    private void Awake()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        graph = GameObject.FindObjectOfType<Graph_tendency>();
+        DataManager.PreviousFanSum = DataManager.FanSum;
         //data=GameObject.FindObjectOfType<DataManager>().GetComponent<DataManager>();
         //data.FanTime=data.MaxFanTime;
     }
-    private void OnTriggerEnter2D(Collider2D other) {
-                if (other.gameObject==player)
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject == player)
         {
             collisionList.Add(other);
-        } 
+        }
     }
-    private void OnTriggerExit2D(Collider2D other) {
-        if (other.gameObject==player)
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject == player)
         {
             collisionList.Remove(other);
-        }  
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(collisionList.Count!=0 && collisionList!=null)
+        if (collisionList.Count != 0 && collisionList != null)
         {
-            DataManager.FanTime-=Time.deltaTime;
+            DataManager.FanTime -= Time.deltaTime;
         }
-        else if (DataManager.FanSum>0)
+        else if (DataManager.FanSum > 0)
         {
-            DataManager.UnsubTime-=(Time.deltaTime*CheckPlayerPos());
+            DataManager.UnsubTime -= (Time.deltaTime * CheckPlayerPos());
         }
         //cooldown for adding fans
-        if(DataManager.FanTime<=0)
+        if (DataManager.FanTime <= 0)
         {
             AddFans();
-            DataManager.FanTime=DataManager.MaxFanTime;
+            DataManager.FanTime = DataManager.MaxFanTime;
         }
-        if(DataManager.UnsubTime<=0 && DataManager.FanSum>0)
+        if (DataManager.UnsubTime <= 0 && DataManager.FanSum > 0)
         {
             Unsubscribe();
-            DataManager.UnsubTime=DataManager.MaxFanTime;
+            DataManager.UnsubTime = DataManager.MaxFanTime;
         }
         //accelerate the fan growing speed
-        if(DataManager.FanSum>=DataManager.MultiplyGoal)
+        if (DataManager.FanSum >= DataManager.MultiplyGoal)
         {
-            DataManager.MultiplyGoal*=2;
-            DataManager.MaxFanTime*=0.8f;
-            DataManager.MaxUnsubTime*=0.8f;
+            DataManager.MultiplyGoal *= 2;
+            DataManager.MaxFanTime *= 0.8f;
+            DataManager.MaxUnsubTime *= 0.8f;
         }
-        else if (DataManager.FanSum<DataManager.MultiplyGoal/2 && DataManager.MultiplyGoal>10)
+        else if (DataManager.FanSum < DataManager.MultiplyGoal / 2 && DataManager.MultiplyGoal >= 10)
         {
-            DataManager.MultiplyGoal/=2;
-            DataManager.MaxFanTime/=0.8f;
-            DataManager.MaxUnsubTime/=0.8f;
+            DataManager.MultiplyGoal /= 2;
+            DataManager.MaxFanTime /= 0.8f;
+            DataManager.MaxUnsubTime /= 0.8f;
         }
         //Debug.Log("total Fans "+ DataManager.FanSum + "Good" + DataManager.Likers+"bad "+DataManager.Haters);
 
@@ -70,33 +73,33 @@ public class CollisionDetection : MonoBehaviour
     public void AddFans()
     {
         float rand = Random.value;
-        if(rand<=0.1f)
+        if (rand <= 0.1f)
         {
-            DataManager.Haters+=DataManager.Subscription_Amplifier;
-            DataManager.FanSum+=DataManager.Subscription_Amplifier;
+            DataManager.Haters += DataManager.Subscription_Amplifier;
+            DataManager.FanSum += DataManager.Subscription_Amplifier;
         }
         else
         {
-            DataManager.Likers+=DataManager.Subscription_Amplifier;
-            DataManager.FanSum+=DataManager.Subscription_Amplifier;
+            DataManager.Likers += DataManager.Subscription_Amplifier;
+            DataManager.FanSum += DataManager.Subscription_Amplifier;
         }
         //graph.Draw(1);
-        
+
     }
     public void Unsubscribe()
     {
         float rand = Random.value;
-        if(rand<=0.1f&&DataManager.Likers>0)
+        if (rand <= 0.1f && DataManager.Likers > 0)
         {
             DataManager.Likers--;
             DataManager.Haters++;
         }
-        else if(DataManager.Likers>0 && rand<=0.9f)
+        else if (DataManager.Likers > 0 && rand <= 0.9f)
         {
             DataManager.Likers--;
             DataManager.FanSum--;
         }
-        else if (DataManager.Haters>0)
+        else if (DataManager.Haters > 0)
         {
             DataManager.Haters--;
             DataManager.FanSum--;
@@ -106,7 +109,7 @@ public class CollisionDetection : MonoBehaviour
     float CheckPlayerPos()
     {
         float difference;
-        difference=transform.position.y-player.transform.position.y;
+        difference = transform.position.y - player.transform.position.y;
         return Mathf.Abs(difference);
     }
 }

@@ -67,7 +67,7 @@ namespace AmpFC.Battle
             {
                 running = false;
             }
-            Debug.Log("Running: " + running);
+            //Debug.Log("Running: " + running);
             return running;
         }
 
