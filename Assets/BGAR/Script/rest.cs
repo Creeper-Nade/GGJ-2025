@@ -12,6 +12,9 @@ public class rest : MonoBehaviour
 
     public GameObject debtpanel;
 
+    public GameObject pinkCha;
+    public GameObject blueCha;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -62,6 +65,20 @@ public class rest : MonoBehaviour
     {
         SFXManager.Instance.PlaySFX(1);
         debtpanel.SetActive(false);
+    }
+
+    public void Pinkcha()
+    {
+        SFXManager.Instance.PlaySFX(2);
+        pinkCha.SetActive(true);
+        blueCha.SetActive(false);
+    }
+
+    public void bluecha()
+    {
+        SFXManager.Instance.PlaySFX(2);
+        pinkCha.SetActive(false);
+        blueCha.SetActive(true);
     }
     private void InitializeHearts()
     {
