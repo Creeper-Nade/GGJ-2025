@@ -62,7 +62,7 @@ public class shop_UImanager : MonoBehaviour
         if (shopManagerScript != null)
         {
             // Set the detail image for the selected item
-            detailImage.sprite = shopManagerScript.itemImages[itemID];  // Set the corresponding sprite for the item
+            detailImage.sprite = shopManagerScript.GetItemImage(itemID);  // Set the corresponding sprite for the item
 
             // Set the function description for the selected item
             detailFunction.text = "" + shopManagerScript.itemFunctions[itemID]; // Display the function of the item
@@ -71,7 +71,7 @@ public class shop_UImanager : MonoBehaviour
             detailDescription.text = "" + shopManagerScript.itemDescriptions[itemID]; // Display the general description
 
             // Set the detailed right-side information for the item
-            rightDetailText.text = "详细描述：" + shopManagerScript.itemRightDetails[itemID]; // Display detailed info
+            rightDetailText.text = "" + shopManagerScript.itemRightDetails[itemID]; // Display detailed info
             priceTextoutput.text = "" + shopManagerScript.shopItems[2, itemID];
             quantityTexttoutput.text = ""+shopManagerScript.shopItems[3, itemID];
             rightDetailExplanatins.text=""+shopManagerScript.itemRightExplainations[itemID];

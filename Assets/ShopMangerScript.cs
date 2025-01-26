@@ -9,7 +9,6 @@ public class ShopMangerScript : MonoBehaviour
     public int[,] shopItems = new int[5, 5];
     public float coins;
     public Text CoinTxt;
-    public Sprite[] itemImages;
     public string[] itemFunctions;
     public string[] itemDescriptions;
     public string[] itemRightDetails;
@@ -33,7 +32,6 @@ public class ShopMangerScript : MonoBehaviour
         shopItems[3, 2] = 0;
         shopItems[3, 3] = 0;
         shopItems[3, 4] = 0;
-        itemImages = new Sprite[6]; // Add images for your items here
         itemFunctions = new string[] {
             "",
             "灰流量",
@@ -67,7 +65,20 @@ public class ShopMangerScript : MonoBehaviour
             "Right details for item 5"
         };
     }
-
+    public Sprite GetItemImage(int itemID)
+    {
+        string imagePath = "Images/Item" + itemID;  // Assuming images are in Resources/Images folder
+        Sprite itemSprite = Resources.Load<Sprite>(imagePath);
+        if (itemSprite != null)
+        {
+            return itemSprite;
+        }
+        else
+        {
+            Debug.LogError("Failed to load image for item ID: " + itemID);
+            return null;
+        }
+    }
     public void PurchaseItem(int itemID)
     {
         // 检查金币是否足够
