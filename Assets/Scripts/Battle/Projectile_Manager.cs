@@ -18,13 +18,13 @@ public class Projectile_Manager : MonoBehaviour
     }
     void Update()
     {
-        //foreach (SequencePlayer sequencePlayer in sequencePlayers)
-        //{
-        //    if (sequencePlayer.sequence.ExecuteNextAttack() == false)
-        //    {
-        //        sequencePlayer.sequence.Initialize();
-        //        sequencePlayer.sequence.Play();
-        //    }
-        //}
+        foreach (SequencePlayer sequencePlayer in sequencePlayers)
+        {
+            if (sequencePlayer.sequence.running == false)
+            {
+                sequencePlayer.sequence.Initialize();
+                sequencePlayer.sequence.Play();
+            }
+        }
     }
 }
