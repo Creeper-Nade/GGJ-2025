@@ -7,8 +7,8 @@ namespace AmpFC.Battle
 {
     public abstract class Attack : ScriptableObject
     {
-        public int coolDownTime; // time before the warning starts
-        public int warningTime; // time before the attack executes
+        public float coolDownTime; // time before the warning starts
+        public float warningTime; // time before the attack executes
         public int damage;
         public AttackExecuter prefab;
         public GameObject warningPrefab;

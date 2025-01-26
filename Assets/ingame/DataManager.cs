@@ -10,11 +10,14 @@ public class DataManager : MonoBehaviour
     public static int PreviousFanSum;
     public static float money;
     public static float Debt;
-    public static float FanTime=0.5f;
-    public static float UnsubTime=FanTime;
-    public static float MaxFanTime=0.5f;
-    public static float MaxUnsubTime=MaxFanTime;
-    public static float MultiplyGoal=5;
-    public static int Subscription_Amplifier=1;
+    public static float FanTime = 0.5f;
+    public static float UnsubTime = FanTime;
+    public static float MaxFanTime = 0.5f;
+    public static float MaxUnsubTime = MaxFanTime;
+    public static float MultiplyGoal = 5;
+    public static int HaterMultiplyGoal = 10;
+    public static int Projectile_level = 0;
+    public static int Subscription_Amplifier = 1;
+    public static int G_bought;
 
 }
