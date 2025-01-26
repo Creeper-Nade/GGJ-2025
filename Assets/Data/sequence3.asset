@@ -14,10 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attacks:
   - attack: {fileID: 11400000, guid: 9ca8b23d27b14db4880014bfe7f2b302, type: 2}
-    position: {x: -8, y: -4, z: 0}
-    rotation: {x: 0, y: 0, z: 90}
-    nextPlayType: 0
-  - attack: {fileID: 11400000, guid: 9ca8b23d27b14db4880014bfe7f2b302, type: 2}
     position: {x: -8, y: 2.5, z: 0}
     rotation: {x: 0, y: 0, z: 90}
     nextPlayType: 0
@@ -41,4 +37,4 @@ MonoBehaviour:
     position: {x: -8, y: -1, z: 0}
     rotation: {x: 0, y: 0, z: 90}
     nextPlayType: 0
-  running: 1
+  running: 0

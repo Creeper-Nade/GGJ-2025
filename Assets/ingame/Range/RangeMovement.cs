@@ -18,9 +18,9 @@ public class RangeMovement : MonoBehaviour
     bool SizeCheck = false;
     [Range(0, 200)] public float lerpSpeed;
 
-    Vector3 FinalPos = new Vector3(3f, 0, 0);
+    Vector3 FinalPos = new Vector3(2.87f, 0, 0);
     Vector3 velocity = Vector3.zero;
-    Vector3 newScale = new Vector3(11.5f, 3, 1);
+    Vector3 newScale = new Vector3(11.9f, 3, 1);
     private void Awake()
     {
         //Camera cam = Camera.main;
@@ -85,7 +85,7 @@ public class RangeMovement : MonoBehaviour
             SizeCheck = true;
             StartCoroutine(SizeChangeWait());
         }
-        FinalPos = new Vector3(3f, BoarderBottom.y + (BoarderTop.y - BoarderBottom.y) / 2, 0);
+        FinalPos = new Vector3(2.87f, BoarderBottom.y + (BoarderTop.y - BoarderBottom.y) / 2, 0);
         transform.position = Vector3.SmoothDamp(transform.position, FinalPos, ref velocity, Time.deltaTime * lerpSpeed);
         transform.localScale = Vector3.Lerp(transform.localScale, newScale, 2.0f * Time.deltaTime);
     }
@@ -125,7 +125,7 @@ public class RangeMovement : MonoBehaviour
         if (pattern_NO != 3)
         {
 
-            transform.localScale = Vector3.Lerp(transform.localScale, new Vector3(11.5f, 1.5f, 1), 2.0f * Time.deltaTime);
+            transform.localScale = Vector3.Lerp(transform.localScale, new Vector3(11.9f, 1.5f, 1), 2.0f * Time.deltaTime);
         }
     }
 

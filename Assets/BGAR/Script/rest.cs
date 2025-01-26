@@ -15,23 +15,30 @@ public class rest : MonoBehaviour
     public GameObject pinkCha;
     public GameObject blueCha;
 
-    // Start is called before the first frame update
+    public DebtSliderController debtSliderController; 
+
+
+    private int[] maxDebtValues = { 3000, 10000, 30000 };
+    private int currentRound = 0; // 当前大轮数
+
     void Start()
     {
         InitializeHearts();
 
-        if(debtpanel != null)
+        if (debtpanel != null)
         {
             debtpanel.SetActive(false);
         }
 
+        if (debtSliderController != null)
+        {
+            debtSliderController.SetMaxDebt(maxDebtValues[currentRound]);
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
         Leveldisplay(currentlevel);
-        resetHeart();
     }
 
     public void NextLevelGame()
@@ -39,12 +46,46 @@ public class rest : MonoBehaviour
         SFXManager.Instance.PlaySFX(0);
         SceneTransition.Instance.LoadSceneWithFade("InGame");
         currentlevel++;
+        //测试保存
+        debtSliderController.AddDebt(1000);
+
+        // 检查是否进入下一轮
+        if (currentlevel % 3 == 1) // 每 3 关进入下一大轮
+        {
+            if(DebtSliderController.currentDebt >= debtSliderController.maxDebt)
+            {
+                UpdateMaxDebt();
+                currentlevel = 1;
+                InitializeHearts();
+            }
+            else if(DebtSliderController.currentDebt < debtSliderController.maxDebt)
+            {
+                SceneTransition.Instance.LoadSceneWithFade("Fail");
+            }
+
+        }
+    }
+
+    private void UpdateMaxDebt()
+    {
+        if (debtSliderController != null)
+        {
+            currentRound++;
+            if (currentRound >= maxDebtValues.Length)
+            {
+                currentRound = 0; 
+            }
+
+            DebtSliderController.currentDebt = 0;
+            debtSliderController.SetMaxDebt(maxDebtValues[currentRound]);
+            
+        }
     }
 
     public void LoadStore()
     {
         SFXManager.Instance.PlaySFX(0);
-        SceneTransition.Instance.LoadSceneWithFade("Store");
+        SceneTransition.Instance.LoadSceneWithFade("newScenes");
     }
 
     public void LoadMenu()
@@ -58,7 +99,6 @@ public class rest : MonoBehaviour
     {
         SFXManager.Instance.PlaySFX(0);
         debtpanel.SetActive(true);
-        //加载还债板
     }
 
     public void CloseDebtPanel()
@@ -80,6 +120,7 @@ public class rest : MonoBehaviour
         pinkCha.SetActive(false);
         blueCha.SetActive(true);
     }
+
     private void InitializeHearts()
     {
         for (int i = 0; i < fullHearts.Length; i++)
@@ -91,26 +132,18 @@ public class rest : MonoBehaviour
 
     public void Leveldisplay(int level)
     {
-        if(level < 1 || level > emptyHearts.Length)
+        if (level < 1 || level > emptyHearts.Length)
         {
             Debug.Log("下一大轮。");
-                return;
+            return;
         }
 
         currentlevel = level;
 
-        for(int i = 0; i < currentlevel; i++)
+        for (int i = 0; i < currentlevel; i++)
         {
             fullHearts[i].gameObject.SetActive(true);
             emptyHearts[i].gameObject.SetActive(false);
-        }
-    }
-
-    public void resetHeart()
-    {
-        if(currentlevel > 3)
-        {
-            currentlevel = 1;
         }
     }
 }
