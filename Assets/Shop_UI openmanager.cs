@@ -9,7 +9,7 @@ public class Shop_UImanager : MonoBehaviour
     void Start()
     {
         Shop_UI = GameObject.Find("Shop_UI");
-        Shop_UI.SetActive(false);
+        Shop_UI.SetActive(true);
     }
 
     public void OnClickShopHandler()
