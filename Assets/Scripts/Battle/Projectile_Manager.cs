@@ -15,7 +15,7 @@ public class Projectile_Manager : MonoBehaviour
         //{
         //    sequencePlayers.Add(GetComponents<SequencePlayer>()[i]);
         //}
-        DataManager.Haters = 38;
+        //DataManager.Haters = 38;
         InitList();
     }
 
