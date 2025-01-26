@@ -23,13 +23,16 @@ public class rest : MonoBehaviour
 
     void Start()
     {
+        // 初始化心形 UI
         InitializeHearts();
 
+        // 关闭债务面板
         if (debtpanel != null)
         {
             debtpanel.SetActive(false);
         }
 
+        // 初始化债务滑块
         if (debtSliderController != null)
         {
             debtSliderController.SetMaxDebt(maxDebtValues[currentRound]);
@@ -46,8 +49,6 @@ public class rest : MonoBehaviour
         SFXManager.Instance.PlaySFX(0);
         SceneTransition.Instance.LoadSceneWithFade("InGame");
         currentlevel++;
-        //测试保存
-        debtSliderController.AddDebt(1000);
 
         // 检查是否进入下一轮
         if (currentlevel % 3 == 1) // 每 3 关进入下一大轮

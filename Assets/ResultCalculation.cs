@@ -22,65 +22,68 @@ public class ResultCalculation : MonoBehaviour
     Animator animator;
     public Animator TransAnime;
     int FanGain;
-    int FanGainIncrease=0;
+    int FanGainIncrease = 0;
     public GameObject SalaryDisplay;
     float Salary;
-    float SalaryIncrease=0;
+    float SalaryIncrease = 0;
     TextMeshProUGUI SalaryTXT;
-    
-    private void Awake() {
-        animator=GetComponent<Animator>();
-        LikerTXT=Liker.GetComponentInChildren<TextMeshProUGUI>();
-        HaterTXT=Hater.GetComponentInChildren<TextMeshProUGUI>();
-        TotalTXT=TotalFan.GetComponentInChildren<TextMeshProUGUI>();
-        GainTXT=FanGainDisplay.GetComponentInChildren<TextMeshProUGUI>();
-        SalaryTXT=SalaryDisplay.GetComponentInChildren<TextMeshProUGUI>();
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+        LikerTXT = Liker.GetComponentInChildren<TextMeshProUGUI>();
+        HaterTXT = Hater.GetComponentInChildren<TextMeshProUGUI>();
+        TotalTXT = TotalFan.GetComponentInChildren<TextMeshProUGUI>();
+        GainTXT = FanGainDisplay.GetComponentInChildren<TextMeshProUGUI>();
+        SalaryTXT = SalaryDisplay.GetComponentInChildren<TextMeshProUGUI>();
 
     }
     public void RecordValue()
     {
-        LikerTXT.text=string.Format("{0}",DataManager.Likers);
-        HaterTXT.text=string.Format("{0}",DataManager.Haters);
-        TotalTXT.text=string.Format("{0}",DataManager.FanSum);
+        LikerTXT.text = string.Format("{0}", DataManager.Likers);
+        HaterTXT.text = string.Format("{0}", DataManager.Haters);
+        TotalTXT.text = string.Format("{0}", DataManager.FanSum);
         animator.SetTrigger("Display");
+        DataManager.G_bought = false;
+        DataManager.Subscription_Amplifier = 1;
         StartCoroutine(DisplayFan());
     }
     IEnumerator DisplayFan()
     {
-                        while(vocalFry.volume>0)
-                {
-                    yield return new WaitForSecondsRealtime(0.01f);
-                    vocalFry.volume-= 0.01f;
-                }
-        yield return new WaitForSecondsRealtime(1);
-        Liker.GetComponent<CanvasGroup>().alpha=1;
-        yield return new WaitForSecondsRealtime(0.5f);
-        Hater.GetComponent<CanvasGroup>().alpha=1;
-        yield return new WaitForSecondsRealtime(0.5f);
-        TotalFan.GetComponent<CanvasGroup>().alpha=1;
-        yield return new WaitForSecondsRealtime(0.5f);
-        FanGainDisplay.GetComponent<CanvasGroup>().alpha=1;
-        FanGain=DataManager.FanSum-DataManager.PreviousFanSum;
-        switch(FanGain)
+        while (vocalFry.volume > 0)
         {
-            case >=0:
-                while(FanGainIncrease<=FanGain)
+            yield return new WaitForSecondsRealtime(0.01f);
+            vocalFry.volume -= 0.01f;
+        }
+        yield return new WaitForSecondsRealtime(1);
+        Liker.GetComponent<CanvasGroup>().alpha = 1;
+        yield return new WaitForSecondsRealtime(0.5f);
+        Hater.GetComponent<CanvasGroup>().alpha = 1;
+        yield return new WaitForSecondsRealtime(0.5f);
+        TotalFan.GetComponent<CanvasGroup>().alpha = 1;
+        yield return new WaitForSecondsRealtime(0.5f);
+        FanGainDisplay.GetComponent<CanvasGroup>().alpha = 1;
+        FanGain = DataManager.FanSum - DataManager.PreviousFanSum;
+        switch (FanGain)
+        {
+            case >= 0:
+                while (FanGainIncrease <= FanGain)
                 {
-                    GainTXT.text=string.Format("Fan Gained: {0}",FanGainIncrease);
+                    GainTXT.text = string.Format("Fan Gained: {0}", FanGainIncrease);
                     yield return new WaitForSecondsRealtime(.001f);
-                    if(FanGainIncrease<FanGain)
+                    if (FanGainIncrease < FanGain)
                     {
                         FanGainIncrease++;
                     }
                     else break;
                 }
                 break;
-            case <0:
-                while(FanGainIncrease>=FanGain)
+            case < 0:
+                while (FanGainIncrease >= FanGain)
                 {
-                    GainTXT.text=string.Format("Fan Gained: {0}",FanGainIncrease);
+                    GainTXT.text = string.Format("Fan Gained: {0}", FanGainIncrease);
                     yield return new WaitForSecondsRealtime(.001f);
-                    if(FanGainIncrease>FanGain)
+                    if (FanGainIncrease > FanGain)
                     {
                         FanGainIncrease--;
                     }
@@ -90,24 +93,24 @@ public class ResultCalculation : MonoBehaviour
 
         }
         yield return new WaitForSecondsRealtime(0.5f);
-        SalaryDisplay.GetComponent<CanvasGroup>().alpha=1;
-        Salary=Mathf.RoundToInt(DataManager.FanSum* Random.Range(6,7));
-        DataManager.money=Salary;
-        while(SalaryIncrease<=Salary)
+        SalaryDisplay.GetComponent<CanvasGroup>().alpha = 1;
+        Salary = Mathf.RoundToInt(DataManager.FanSum * Random.Range(6, 7));
+        DataManager.money = Salary;
+        while (SalaryIncrease <= Salary)
         {
-            SalaryTXT.text=string.Format("Income: {0}",SalaryIncrease);
+            SalaryTXT.text = string.Format("Income: {0}", SalaryIncrease);
             yield return new WaitForSecondsRealtime(.0002f);
-            if(SalaryIncrease<Salary)
+            if (SalaryIncrease < Salary)
             {
                 SalaryIncrease++;
             }
             else break;
         }
         yield return new WaitForSecondsRealtime(0.5f);
-        CloseButton.GetComponent<CanvasGroup>().alpha=1;
+        CloseButton.GetComponent<CanvasGroup>().alpha = 1;
 
     }
-    
+
     public void ToIntermission()
     {
         TransAnime.SetTrigger("close");
@@ -118,8 +121,7 @@ public class ResultCalculation : MonoBehaviour
         yield return new WaitForSecondsRealtime(1);
 
         Time.timeScale = 1;
-
-        SceneManager.LoadScene("Rest");
+        SceneTransition.Instance.LoadSceneWithFade("Rest");
     }
 
 }
