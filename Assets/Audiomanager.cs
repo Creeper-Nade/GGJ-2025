@@ -4,12 +4,19 @@ using UnityEngine;
 
 public class Audiomanager : MonoBehaviour
 {
-    public AudioSource audiosource;
-   public void Playmusic()
+    public AudioSource audioSource; // 用于播放音乐的 AudioSource 组件
+
+    // 在游戏开始时播放音乐
+    void Start()
     {
-        if (audiosource != null && !audiosource.isPlaying)
+        // 确保 AudioSource 已经设置
+        if (audioSource != null && !audioSource.isPlaying)
         {
-            audiosource.Play();
+            audioSource.Play(); // 播放音乐
+        }
+        else
+        {
+            Debug.LogWarning("AudioSource is not assigned or is already playing.");
         }
     }
 }

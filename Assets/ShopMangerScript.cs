@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 public class ShopMangerScript : MonoBehaviour
 {
     public int[,] shopItems = new int[5, 5];
-    public float coins;
+    public static float coins;
     public Text CoinTxt;
     public string[] itemFunctions;
     public string[] itemDescriptions;
@@ -16,6 +16,7 @@ public class ShopMangerScript : MonoBehaviour
     public int selectedItemID = -1;
     void Start()
     {
+        coins = DataManager.money;
         CoinTxt.text = "Coins: " + coins.ToString();
         // ID is
         shopItems[1, 1] = 1;
