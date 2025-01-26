@@ -50,7 +50,7 @@ public class Projectile_Manager : MonoBehaviour
         {
             SelectedPattern = null;
         }
-        if (SelectedPattern != null && !SelectedPattern.sequence.running)
+        if (SelectedPattern != null && SelectedPattern.sequence.running == false)
         {
             RandomizeSequence();
 
@@ -59,7 +59,10 @@ public class Projectile_Manager : MonoBehaviour
     }
     void RandomizeSequence()
     {
-        SelectedPattern = enabledSequencePlayers[Random.Range(0, enabledSequencePlayers.Count())];
+        if (enabledSequencePlayers.Count() > 1)
+            SelectedPattern = enabledSequencePlayers[Random.Range(0, enabledSequencePlayers.Count() - 1)];
+        else
+            SelectedPattern = enabledSequencePlayers[0];
         SelectedPattern.sequence.Initialize();
         SelectedPattern.sequence.Play();
     }

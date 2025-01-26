@@ -18,5 +18,6 @@ public class DataManager : MonoBehaviour
     public static int HaterMultiplyGoal = 10;
     public static int Projectile_level = 0;
     public static int Subscription_Amplifier = 1;
+    public static int G_bought;
 
 }
