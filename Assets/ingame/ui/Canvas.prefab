@@ -816,8 +816,8 @@ CanvasGroup:
   m_GameObject: {fileID: 1719675053636637936}
   m_Enabled: 1
   m_Alpha: 0
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!1 &2137381867512370043
 GameObject:
@@ -1102,7 +1102,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2969028797707626758}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -2451,8 +2451,8 @@ CanvasGroup:
   m_GameObject: {fileID: 5490160304112557459}
   m_Enabled: 1
   m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!95 &811650362216382028
 Animator:
@@ -3429,7 +3429,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -9.6, y: -33}
+  m_AnchoredPosition: {x: -9.600006, y: -33}
   m_SizeDelta: {x: 120.2, y: 80}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &5784129980098339907
@@ -3661,8 +3661,8 @@ CanvasGroup:
   m_GameObject: {fileID: 7573673541798238634}
   m_Enabled: 1
   m_Alpha: 0
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!1 &7746304568572750824
 GameObject:
