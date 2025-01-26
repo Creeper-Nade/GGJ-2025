@@ -5,7 +5,7 @@ public class DebtSliderController : MonoBehaviour
 {
     public Slider debtSlider;
     public Text debtText;
-    public int currentDebt = 0;
+    public static int currentDebt = 0;
     public int maxDebt = 3000;
 
     void Start()

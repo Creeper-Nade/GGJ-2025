@@ -54,6 +54,10 @@ public class SFXManager : MonoBehaviour
         {
             PlayBGM(1); 
         }
+        else if (sceneName == "newScenes")
+        {
+            PlayBGM(2);
+        }
     }
 
     public void PlaySFX(int index)

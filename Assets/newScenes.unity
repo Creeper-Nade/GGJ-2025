@@ -1226,7 +1226,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &278383294
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2219,6 +2219,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2256428777423531895, guid: 47419606ff4c2ce43a78e4836c5ceddd, type: 3}
+      propertyPath: bgmClips.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2256428777423531895, guid: 47419606ff4c2ce43a78e4836c5ceddd, type: 3}
+      propertyPath: bgmClips.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 053cedc00c8207a46855e164f4392187, type: 3}
     - target: {fileID: 8878125383198744043, guid: 47419606ff4c2ce43a78e4836c5ceddd, type: 3}
       propertyPath: m_Name
       value: SFXManagaer
@@ -3065,7 +3073,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &1134373171
 AudioSource:
   m_ObjectHideFlags: 0

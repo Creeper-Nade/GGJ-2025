@@ -44,21 +44,21 @@ public class rest : MonoBehaviour
     public void NextLevelGame()
     {
         SFXManager.Instance.PlaySFX(0);
-        //SceneTransition.Instance.LoadSceneWithFade("InGame");
+        SceneTransition.Instance.LoadSceneWithFade("InGame");
         currentlevel++;
         //测试保存
-        //debtSliderController.AddDebt(1000);
+        debtSliderController.AddDebt(1000);
 
         // 检查是否进入下一轮
         if (currentlevel % 3 == 1) // 每 3 关进入下一大轮
         {
-            if(debtSliderController.currentDebt >= debtSliderController.maxDebt)
+            if(DebtSliderController.currentDebt >= debtSliderController.maxDebt)
             {
                 UpdateMaxDebt();
                 currentlevel = 1;
                 InitializeHearts();
             }
-            else if(debtSliderController.currentDebt < debtSliderController.maxDebt)
+            else if(DebtSliderController.currentDebt < debtSliderController.maxDebt)
             {
                 SceneTransition.Instance.LoadSceneWithFade("Fail");
             }
@@ -76,7 +76,7 @@ public class rest : MonoBehaviour
                 currentRound = 0; 
             }
 
-            debtSliderController.currentDebt = 0;
+            DebtSliderController.currentDebt = 0;
             debtSliderController.SetMaxDebt(maxDebtValues[currentRound]);
             
         }
